@@ -1,18 +1,18 @@
 import {
   BriefcaseBusiness,
   Calendar,
-  CalendarCheck,
+  // CalendarCheck,
   File,
   Home,
   Inbox,
   LaptopMinimal,
-  Layers2,
+  // Layers2,
   Notebook,
   Search,
   Settings,
-  Ticket,
+  // Ticket,
   Trash,
-  UserCog,
+  // UserCog,
 } from "lucide-react";
 
 // Menu items.
@@ -65,28 +65,28 @@ export const applicationMenuItems = [
 ];
 
 export const controlMenuItems = [
+  // {
+  //   title: "",
+  //   url: "#",
+  //   icon: UserCog,
+  // },
   {
-    title: "Roles",
-    url: "#",
-    icon: UserCog,
-  },
-  {
-    title: "Booking",
+    title: "Home",
     url: "#",
     icon: Notebook,
     items: [
       {
-        title: "Car",
+        title: "Clinics",
         url: "#",
       },
       {
-        title: "Meeting Room",
+        title: "Testimonials",
         url: "#",
       },
     ],
   },
   {
-    title: "Job",
+    title: "Blogs",
     url: "#",
     icon: BriefcaseBusiness,
     items: [
@@ -99,11 +99,11 @@ export const controlMenuItems = [
         url: "#",
       },
       {
-        title: "Manage",
+        title: "Categories",
         url: "#",
         items: [
           {
-            title: "Create",
+            title: "List",
             url: "#",
           },
           {
@@ -114,37 +114,52 @@ export const controlMenuItems = [
       },
     ],
   },
+  {
+    title: "About",
+    url: "#",
+    icon: Notebook,
+    items: [
+      {
+        title: "Clinics",
+        url: "#",
+      },
+      {
+        title: "Testimonials",
+        url: "#",
+      },
+    ],
+  },
 
   {
-    title: "File",
+    title: "Socials",
     url: "#",
     icon: File,
   },
   {
-    title: "Course",
+    title: "Services",
     url: "#",
     icon: LaptopMinimal,
   },
-  {
-    title: "Events",
-    url: "#",
-    icon: Ticket,
-  },
-  {
-    title: "Holidays",
-    url: "#",
-    icon: CalendarCheck,
-  },
-  {
-    title: "Assets",
-    url: "#",
-    icon: Layers2,
-  },
+  // {
+  //   title: "Events",
+  //   url: "#",
+  //   icon: Ticket,
+  // },
+  // {
+  //   title: "Holidays",
+  //   url: "#",
+  //   icon: CalendarCheck,
+  // },
+  // {
+  //   title: "Assets",
+  //   url: "#",
+  //   icon: Layers2,
+  // },
 ];
 
 export const supportMenuItems = [
   {
-    title: "Trash",
+    title: "Translation",
     url: "#",
     icon: Trash,
   },
