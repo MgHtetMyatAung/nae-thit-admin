@@ -10,7 +10,7 @@ export default function DashboardLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className=" w-full relative scroll-bar-fit">
+      <main className=" w-full relative scroll-bar-fit bg-gray-100">
         <DashboardMenu />
         <div className=" p-5 w-full h-full">
           <div className="">{children}</div>

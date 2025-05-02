@@ -1,3 +1,4 @@
+import { ROUTE_PATH } from "@/constants/route";
 import {
   BriefcaseBusiness,
   Calendar,
@@ -92,11 +93,11 @@ export const controlMenuItems = [
     items: [
       {
         title: "List",
-        url: "#",
+        url: ROUTE_PATH.BLOG.LIST,
       },
       {
-        title: "Recent",
-        url: "#",
+        title: "Create",
+        url: ROUTE_PATH.BLOG.CREATE,
       },
       {
         title: "Categories",

@@ -12,6 +12,7 @@ import {
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function SecondLevelMenu({ items }: { items: any }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +20,9 @@ export default function SecondLevelMenu({ items }: { items: any }) {
     return (
       <SidebarMenuSubItem>
         <SidebarMenuSubButton asChild className=" py-5">
-          <a href={items.url}>
+          <Link to={items.url}>
             <span>{items.title}</span>
-          </a>
+          </Link>
         </SidebarMenuSubButton>
       </SidebarMenuSubItem>
     );
@@ -49,9 +50,9 @@ export default function SecondLevelMenu({ items }: { items: any }) {
               {items.items?.map((subItem: any) => (
                 <SidebarMenuSubItem key={subItem.title}>
                   <SidebarMenuSubButton asChild className=" py-5">
-                    <a href={subItem.url}>
+                    <Link to={subItem.url}>
                       <span>{subItem.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
               ))}

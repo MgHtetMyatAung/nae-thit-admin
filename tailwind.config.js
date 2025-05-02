@@ -61,7 +61,7 @@ module.exports = {
           ring: "hsl(var(--sidebar-ring))",
         },
         "secondary-gray": "#e5e7eb",
-        "secondary-green": "#FFC63E",
+        "secondary-yellow": "#FFC63E",
         "secondary-blue": "#293b8a",
       },
     },

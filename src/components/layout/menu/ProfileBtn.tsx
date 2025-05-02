@@ -8,7 +8,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useDispatch } from "react-redux";
+import { systemLogout } from "@/redux/auth.slice";
 export function ProfileBtn() {
+  const dispatch = useDispatch();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -50,7 +53,10 @@ export function ProfileBtn() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className=" cursor-pointer">
+        <DropdownMenuItem
+          className=" cursor-pointer"
+          onClick={() => dispatch(systemLogout())}
+        >
           <LogOut />
           Log out
         </DropdownMenuItem>

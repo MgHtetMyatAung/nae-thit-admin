@@ -200,4 +200,7 @@ button:focus-visible {
   body {
     @apply bg-background text-foreground;
   }
+  h3 {
+    @apply text-2xl font-semibold;
+  }
 }

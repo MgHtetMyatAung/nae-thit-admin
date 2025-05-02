@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import SecondLevelMenu from "./second-level-menu";
+import { Link } from "react-router-dom";
 
 export default function TopLevelMenu({ items }: { items: any }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,10 +21,10 @@ export default function TopLevelMenu({ items }: { items: any }) {
     return (
       <SidebarMenuItem key={items.title}>
         <SidebarMenuButton asChild tooltip={items.title} className=" py-5">
-          <a href={items.url}>
+          <Link to={items.url}>
             <items.icon />
             <span className=" font-medium">{items.title}</span>
-          </a>
+          </Link>
         </SidebarMenuButton>
       </SidebarMenuItem>
     );
