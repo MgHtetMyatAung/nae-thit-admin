@@ -4,3 +4,13 @@ type BlogType = {
   descriptionen: string;
   image: string;
 };
+
+type BlogTypePayload = {
+  titlemm: string;
+  titleen: string;
+  descriptionmm: string;
+  descriptionen: string;
+  category?: string;
+  tag?: string;
+  // image?: string;
+};
