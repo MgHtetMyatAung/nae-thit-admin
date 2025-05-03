@@ -16,8 +16,8 @@ export const ROUTE_PATH = {
   // blog
   BLOG: {
     LIST: "/blogs",
-    CREATE: "/blog/create",
-    EDIT: "/blogs/:blogId",
+    CREATE: "/blogs/create",
+    EDIT: "/blogs/edit/:blogId",
   },
 
   // SYSTEM: {
