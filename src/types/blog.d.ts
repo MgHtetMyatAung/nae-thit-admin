@@ -6,11 +6,29 @@ type BlogType = {
 };
 
 type BlogTypePayload = {
-  titlemm: string;
+  titlemy: string;
   titleen: string;
-  descriptionmm: string;
+  descriptionmy: string;
   descriptionen: string;
-  category?: string;
-  tag?: string;
+  catagory?: string;
+  // tag?: string;
   // image?: string;
+  blogen: string;
+  blogmy: string;
+  postdate: string;
+  timelength: string;
+};
+
+type BlogPostRes = {
+  id: string;
+  titleen: string;
+  titlemy: string;
+  descriptionen: string;
+  descriptionmy: string;
+  blogen: string;
+  blogmy: string;
+  postdate: string;
+  timelength: string;
+  catagory: string;
+  imageUrl?: string;
 };
