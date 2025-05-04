@@ -52,7 +52,7 @@ export const RouteConfig = [
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
   },
-
+  
   // auth routes
   {
     path: ROUTE_PATH.LOGIN,
