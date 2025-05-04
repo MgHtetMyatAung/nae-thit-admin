@@ -20,6 +20,10 @@ export const ROUTE_PATH = {
     EDIT: "/blogs/:blogId",
   },
 
+  ABOUTUS:{
+    UPDATEBANNER:"/aboutbanner/update"
+  },
+
   // SYSTEM: {
   //   USER_CREATION: '/system/user',
   //   AGENT_CREATION: '/system/agent',

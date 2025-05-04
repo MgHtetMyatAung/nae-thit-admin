@@ -5,6 +5,7 @@ import {
   BlogEditPage,
   BlogListPage,
   DashboardPage,
+  AboutBannerPage,
   LoginPage,
   VerifyPage,
 } from "@/pages";
@@ -53,6 +54,16 @@ export const RouteConfig = [
     access_type: ROUTE_ACCESS.PRIVATE,
   },
 
+   /* About banner route */
+   {
+    path:ROUTE_PATH.ABOUTUS.UPDATEBANNER,
+    element:(
+      <>
+      <PageTitle title="Aboutus Banner" />
+      <AboutBannerPage/>
+    </>
+    )
+  },
   // auth routes
   {
     path: ROUTE_PATH.LOGIN,
