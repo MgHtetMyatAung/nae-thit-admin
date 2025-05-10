@@ -4,7 +4,8 @@ import { RootState } from "@/redux/store";
 export const baseAPI = createApi({
   reducerPath: "base",
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_API_URL,
+    baseUrl:"https://naethitasanv2.onrender.com/api",
+   // baseUrl: import.meta.env.VITE_API_URL,
     // headers: {
     //   "Content-Type": "application/json",
     // },

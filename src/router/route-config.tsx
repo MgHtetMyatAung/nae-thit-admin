@@ -4,10 +4,12 @@ import {
   BlogCreatePage,
   BlogEditPage,
   BlogListPage,
+  AboutusBannerEditPage,
   DashboardPage,
   LoginPage,
   VerifyPage,
 } from "@/pages";
+import { Route } from "react-router-dom";
 
 export const RouteConfig = [
   {
@@ -51,6 +53,18 @@ export const RouteConfig = [
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
+  /* Aboutus Banner */
+  {
+    path: ROUTE_PATH.ABOUTUSBANNER.EDIT,
+    element:(
+      <>
+       <PageTitle title="Aboutus Banner Edit" />
+       <AboutusBannerEditPage />
+      </>
+    ),
+    access_type:ROUTE_ACCESS.PRIVATE
   },
   
   // auth routes

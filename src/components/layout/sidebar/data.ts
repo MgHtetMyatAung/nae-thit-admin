@@ -115,6 +115,22 @@ export const controlMenuItems = [
       },
     ],
   },
+  /* Aboutus */
+  {
+    title: "Aboutus",
+    url: "#",
+    icon: Notebook,
+    items: [
+      {
+        title: "Aboutus Banner",
+        url: ROUTE_PATH.ABOUTUSBANNER.EDIT,
+      },
+      {
+        title: "Testimonials",
+        url: "#",
+      },
+    ],
+  },
   {
     title: "About",
     url: "#",
