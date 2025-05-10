@@ -77,8 +77,8 @@ export const controlMenuItems = [
     icon: Notebook,
     items: [
       {
-        title: "Clinics",
-        url: "#",
+        title: "Banner Info",
+        url: ROUTE_PATH.HOME.EDIT,
       },
       {
         title: "Testimonials",

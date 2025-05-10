@@ -20,14 +20,19 @@ export const ROUTE_PATH = {
     EDIT: "/blogs/edit/:blogId",
   },
 
-  ABOUTUSBANNER:{
-    EDIT:"/aboutusbanner/edit"
+  ABOUTUSBANNER: {
+    EDIT: "/aboutusbanner/edit",
   },
 
-  AboutusMission:{
-    CREATE:"/aboutmission/create",
-    LIST:"/aboutmission/list",
-    EDIT:"/aboutmission/edit"
+  AboutusMission: {
+    CREATE: "/aboutmission/create",
+    LIST: "/aboutmission/list",
+    EDIT: "/aboutmission/edit",
+  },
+
+  // home page
+  HOME: {
+    EDIT: "/home-banner-info/edit",
   },
   // SYSTEM: {
   //   USER_CREATION: '/system/user',
