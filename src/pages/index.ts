@@ -7,6 +7,9 @@ export { default as BlogEditPage } from "./blog/BlogEdit.page";
 
 //aboutus
 export { default as AboutusBannerEditPage } from "./aboutus/bannerEdit.page"
+export {default as AboutusMissionCreatePage} from './aboutus/mission.page'
+export {default as GetMissionPage } from "./aboutus/getMission.page"
+export {default as EditMissionPage}  from "./aboutus/MissionEdit.page"
 // auth
 export { default as LoginPage } from "./auth/Login.page";
 export { default as VerifyPage } from "./auth/Verify.page";

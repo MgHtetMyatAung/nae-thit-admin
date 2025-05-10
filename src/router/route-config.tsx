@@ -5,6 +5,9 @@ import {
   BlogEditPage,
   BlogListPage,
   AboutusBannerEditPage,
+  AboutusMissionCreatePage,
+  GetMissionPage,
+  EditMissionPage,
   DashboardPage,
   LoginPage,
   VerifyPage,
@@ -62,6 +65,39 @@ export const RouteConfig = [
       <>
        <PageTitle title="Aboutus Banner Edit" />
        <AboutusBannerEditPage />
+      </>
+    ),
+    access_type:ROUTE_ACCESS.PRIVATE
+  },
+  /* Aboutus Mission Create */
+  {
+    path: ROUTE_PATH.AboutusMission.CREATE,
+    element:(
+      <>
+       <PageTitle title="Aboutus Mission Create" />
+       <AboutusMissionCreatePage />
+      </>
+    ),
+    access_type:ROUTE_ACCESS.PRIVATE
+  },
+  /* Aboutus Mission List */
+  {
+    path: ROUTE_PATH.AboutusMission.LIST,
+    element:(
+      <>
+       <PageTitle title="Aboutus Mission List" />
+       <GetMissionPage/>
+      </>
+    ),
+    access_type:ROUTE_ACCESS.PRIVATE
+  },
+  /* Aboutus Mission Edit */
+  {
+    path: ROUTE_PATH.AboutusMission.EDIT,
+    element:(
+      <>
+       <PageTitle title="Aboutus Mission Edit" />
+       <EditMissionPage/>
       </>
     ),
     access_type:ROUTE_ACCESS.PRIVATE

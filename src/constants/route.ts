@@ -24,6 +24,11 @@ export const ROUTE_PATH = {
     EDIT:"/aboutusbanner/edit"
   },
 
+  AboutusMission:{
+    CREATE:"/aboutmission/create",
+    LIST:"/aboutmission/list",
+    EDIT:"/aboutmission/edit"
+  },
   // SYSTEM: {
   //   USER_CREATION: '/system/user',
   //   AGENT_CREATION: '/system/agent',

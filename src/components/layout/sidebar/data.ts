@@ -126,6 +126,18 @@ export const controlMenuItems = [
         url: ROUTE_PATH.ABOUTUSBANNER.EDIT,
       },
       {
+        title: "Create Mission",
+        url: ROUTE_PATH.AboutusMission.CREATE,
+      },
+      {
+        title: " Mission List",
+        url: ROUTE_PATH.AboutusMission.LIST,
+      },
+      {
+        title: "Edit Mission",
+        url: ROUTE_PATH.AboutusMission.EDIT,
+      },
+      {
         title: "Testimonials",
         url: "#",
       },
