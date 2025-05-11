@@ -27,7 +27,7 @@ export const ROUTE_PATH = {
   AboutusMission:{
     CREATE:"/aboutmission/create",
     LIST:"/aboutmission/list",
-    EDIT:"/aboutmission/edit"
+    EDIT:"/aboutmission/edit/:missionid"
   },
   // SYSTEM: {
   //   USER_CREATION: '/system/user',

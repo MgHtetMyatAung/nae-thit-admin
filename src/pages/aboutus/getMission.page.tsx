@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useGetMissionQuery } from "@/api/endpoints/aboutmission.api";
 import { SquarePen } from "lucide-react";
-import DeleteBlogBtn from "@/components/action/DeleteBlogBtn";
+import DeleteMissionBtn from "@/components/action/DeleteMissionBtn";
+import { useNavigate } from "react-router-dom"
 export default function GetMissionPage(){
     const {data:MissionsData, isLoading}= useGetMissionQuery({})
- 
+    const navigate = useNavigate()
     if(isLoading){
         return <div>...Loading</div>
     }
@@ -33,10 +34,10 @@ export default function GetMissionPage(){
       </h1>
       <p className="text-gray-700">{mission?.mission?.en}</p>
       <div className="flex justify-between mt-3">
-      <button className="text-blue-800">
+      <button onClick={()=>navigate(`/aboutmission/edit/${mission?._id}`)} className="text-blue-800">
         <SquarePen/>
       </button>
-      <DeleteBlogBtn blogId={mission?._id}/>
+      <DeleteMissionBtn missionId={mission?._id}/>
       </div>
     </div>
   ))}
