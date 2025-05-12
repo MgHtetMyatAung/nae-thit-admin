@@ -13,7 +13,18 @@ export { default as EditMissionPage } from "./aboutus/MissionEdit.page";
 
 // home page
 export { default as HomePageBannerInfoPage } from "./home/HomePageBannerInfo.page";
+export { default as TestimonialPage } from "./home/Testimonials.page";
+export { default as TestimonialCreatePage } from "./home/TestimonialsCreate.page";
+export { default as TestimonialEditPage } from "./home/TestimonialsEdit.page";
+
+// service page
+export { default as ServicePage } from "./services/Services.page";
+export { default as ServiceCreatePage } from "./services/ServicesCreate.page";
+export { default as ServiceEditPage } from "./services/ServicesEdit.page";
 
 // auth
 export { default as LoginPage } from "./auth/Login.page";
 export { default as VerifyPage } from "./auth/Verify.page";
+
+// not found
+export { default as NotFoundPage } from "./404/NotFound.page";

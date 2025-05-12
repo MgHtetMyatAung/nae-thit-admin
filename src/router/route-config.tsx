@@ -12,6 +12,13 @@ import {
   LoginPage,
   VerifyPage,
   HomePageBannerInfoPage,
+  NotFoundPage,
+  TestimonialPage,
+  TestimonialCreatePage,
+  TestimonialEditPage,
+  ServicePage,
+  ServiceCreatePage,
+  ServiceEditPage,
 } from "@/pages";
 
 export const RouteConfig = [
@@ -114,6 +121,69 @@ export const RouteConfig = [
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
   },
+  {
+    path: ROUTE_PATH.HOME.TESTIMONIAL.LIST,
+    element: (
+      <>
+        <PageTitle title="Testimonials" />
+        <TestimonialPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.TESTIMONIAL.CREATE,
+    element: (
+      <>
+        <PageTitle title="Create Testimonial" />
+        <TestimonialCreatePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.TESTIMONIAL.EDIT,
+    element: (
+      <>
+        <PageTitle title="Edit Testimonial" />
+        <TestimonialEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
+  // service routes
+
+  {
+    path: ROUTE_PATH.SERVICES.LIST,
+    element: (
+      <>
+        <PageTitle title="Services" />
+        <ServicePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.SERVICES.CREATE,
+    element: (
+      <>
+        <PageTitle title="Create Service" />
+        <ServiceCreatePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.SERVICES.EDIT,
+    element: (
+      <>
+        <PageTitle title="Edit Service" />
+        <ServiceEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
 
   // auth routes
   {
@@ -137,9 +207,9 @@ export const RouteConfig = [
     access_type: ROUTE_ACCESS.AUTH,
   },
   // not found route
-  // {
-  //   path: ROUTE_PATH.NOT_FOUND,
-  //   element: <NotFoundPage />,
-  //   access_type: ROUTE_ACCESS.PUBLIC,
-  // },
+  {
+    path: ROUTE_PATH.NOT_FOUND,
+    element: <NotFoundPage />,
+    access_type: ROUTE_ACCESS.PUBLIC,
+  },
 ];

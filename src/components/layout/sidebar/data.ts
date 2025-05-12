@@ -83,6 +83,16 @@ export const controlMenuItems = [
       {
         title: "Testimonials",
         url: "#",
+        items: [
+          {
+            title: "List",
+            url: ROUTE_PATH.HOME.TESTIMONIAL.LIST,
+          },
+          {
+            title: "create",
+            url: ROUTE_PATH.HOME.TESTIMONIAL.CREATE,
+          },
+        ],
       },
     ],
   },
@@ -117,7 +127,7 @@ export const controlMenuItems = [
   },
   /* Aboutus */
   {
-    title: "Aboutus",
+    title: "About us",
     url: "#",
     icon: Notebook,
     items: [
@@ -144,16 +154,20 @@ export const controlMenuItems = [
     ],
   },
   {
-    title: "About",
+    title: "Services",
     url: "#",
     icon: Notebook,
     items: [
       {
-        title: "Clinics",
-        url: "#",
+        title: "List",
+        url: ROUTE_PATH.SERVICES.LIST,
       },
       {
-        title: "Testimonials",
+        title: "Create",
+        url: ROUTE_PATH.SERVICES.CREATE,
+      },
+      {
+        title: "Banner",
         url: "#",
       },
     ],

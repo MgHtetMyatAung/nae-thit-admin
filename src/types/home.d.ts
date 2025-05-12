@@ -23,3 +23,13 @@ type HomeBannerInfoResType = {
   success: boolean;
   data: HomeBannerInfoResType;
 };
+
+type TestimonialType = {
+  note_en: string;
+  note_my: string;
+  patient_name_en: string;
+  patient_name_my: string;
+  patient_type_en: string;
+  patient_type_my: string;
+  _id: string;
+};
