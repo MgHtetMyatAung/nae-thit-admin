@@ -18,13 +18,13 @@ export const homeApi = baseAPI.injectEndpoints({
       query: () => ({ url: `/pages/testimonals`, method: "GET" }),
       providesTags: [tagTypeData.Testimonial],
     }),
-    // getBlogDetail: build.query({
-    //   query: ({ id }) => ({
-    //     url: `/pages/blog/${id}`,
-    //     method: "GET",
-    //   }),
-    //   providesTags: [tagTypeData.Blog],
-    // }),
+    getTestimonialDetail: build.query({
+      query: ({ id }) => ({
+        url: `/pages/testimonals/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypeData.Testimonial],
+    }),
     createTestimonial: build.mutation({
       query: (data) => ({
         url: `/pages/testimonals`,
@@ -58,4 +58,5 @@ export const {
   useDeleteTestimonialMutation,
   useEditTestimonialMutation,
   useGetTestimonialsQuery,
+  useGetTestimonialDetailQuery,
 } = homeApi;
