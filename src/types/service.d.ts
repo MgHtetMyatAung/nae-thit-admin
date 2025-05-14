@@ -8,5 +8,5 @@ type ServiceType = {
   subtitle_my: string;
   description_en: string;
   description_my: string;
-  showonhomepage: boolean;
+  showonhomepage: string;
 };

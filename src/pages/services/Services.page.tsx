@@ -5,6 +5,8 @@ import { ROUTE_PATH } from "@/constants/route";
 import { PenSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const api_url = import.meta.env.VITE_BASE_URL;
+
 export default function ServicesPage() {
   const { data, isLoading } = useGetServicesQuery({});
   if (isLoading) {
@@ -29,6 +31,13 @@ export default function ServicesPage() {
             className=" p-3 rounded-lg bg-white shadow flex flex-col"
           >
             <div className=" space-y-1 mb-5">
+              <div className=" pb-3">
+                <img
+                  src={api_url + `${item.logo}`}
+                  alt="logo"
+                  className=" h-[60px]"
+                />
+              </div>
               <h5 className=" text-lg font-semibold">{item.title_en}</h5>
               <p className=" text-gray-600">{item.description_en}</p>
             </div>

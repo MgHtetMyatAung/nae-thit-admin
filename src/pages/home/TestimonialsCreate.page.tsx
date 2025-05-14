@@ -4,10 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ROUTE_PATH } from "@/constants/route";
+import { ChevronLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function TestimonialsCreatePage() {
+  const navigate = useNavigate();
   const [createTestimonial, { isLoading }] = useCreateTestimonialMutation();
   const { register, handleSubmit, reset } =
     useForm<Omit<TestimonialType, "_id">>();
@@ -24,6 +28,15 @@ export default function TestimonialsCreatePage() {
   };
   return (
     <div>
+      <div>
+        <button
+          className=" flex items-center gap-3 font-medium mb-5 cursor-pointer"
+          onClick={() => navigate(ROUTE_PATH.HOME.TESTIMONIAL.LIST)}
+        >
+          <ChevronLeft size={20} />
+          <span>Back to List</span>
+        </button>
+      </div>
       <h3>Create New Testimonial</h3>
       <div className=" mt-5">
         <form action="" onSubmit={handleSubmit(handleCreate)}>
