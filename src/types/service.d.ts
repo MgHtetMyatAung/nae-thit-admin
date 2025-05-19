@@ -10,3 +10,17 @@ type ServiceType = {
   description_my: string;
   showonhomepage: string;
 };
+
+type ServiceBanner = {
+  header_en: string;
+  header_my: string;
+  subheader_en: string;
+  subheader_my: string;
+  blog1_en: string;
+  blog1_my: string;
+  blog2_en: string;
+  blog2_my: string;
+  banner_bg_img?: string;
+  blog1_img?: string;
+  blog2_img?: string;
+};
