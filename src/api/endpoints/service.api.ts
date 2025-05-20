@@ -44,6 +44,18 @@ export const serviceApi = baseAPI.injectEndpoints({
     //     body: body,
     //   }),
     // }),
+    getServiceBanner: build.query({
+      query: () => ({ url: `/pages/servicedata`, method: "GET" }),
+      providesTags: [tagTypeData.ServiceBanner],
+    }),
+    editServiceBanner: build.mutation({
+      query: (data) => ({
+        url: `/pages/servicedata`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: [tagTypeData.ServiceBanner],
+    }),
   }),
   overrideExisting: false,
 });
@@ -54,4 +66,6 @@ export const {
   useCreateServiceMutation,
   useDeleteServiceMutation,
   useEditServiceMutation,
+  useGetServiceBannerQuery,
+  useEditServiceBannerMutation,
 } = serviceApi;

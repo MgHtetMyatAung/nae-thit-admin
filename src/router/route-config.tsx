@@ -19,6 +19,7 @@ import {
   ServicePage,
   ServiceCreatePage,
   ServiceEditPage,
+  ServiceBannerPage,
 } from "@/pages";
 
 export const RouteConfig = [
@@ -180,6 +181,16 @@ export const RouteConfig = [
       <>
         <PageTitle title="Edit Service" />
         <ServiceEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.SERVICES.BANNER,
+    element: (
+      <>
+        <PageTitle title="Service Banner" />
+        <ServiceBannerPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,

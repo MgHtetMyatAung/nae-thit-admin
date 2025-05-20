@@ -1,67 +1,66 @@
 import { ROUTE_PATH } from "@/constants/route";
 import {
   BriefcaseBusiness,
-  Calendar,
   // CalendarCheck,
-  File,
+  // File,
   Home,
   Inbox,
-  LaptopMinimal,
+  // LaptopMinimal,
   // Layers2,
   Notebook,
-  Search,
+  ReceiptText,
   Settings,
   // Ticket,
-  Trash,
+  // Trash,
   // UserCog,
 } from "lucide-react";
 
 // Menu items.
 
 export const applicationMenuItems = [
+  // {
+  //   title: "Home",
+  //   url: "#",
+  //   icon: Home,
+  //   items: [
+  //     {
+  //       title: "Forms",
+  //       url: "#",
+  //     },
+  //     {
+  //       title: "Inputs",
+  //       url: "#",
+  //     },
+  //     {
+  //       title: "Datas",
+  //       url: "#",
+  //       items: [
+  //         {
+  //           title: "All",
+  //           url: "#",
+  //         },
+  //         {
+  //           title: "Filters",
+  //           url: "#",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
   {
-    title: "Home",
-    url: "#",
+    title: "Dashboard",
+    url: "/",
     icon: Home,
-    items: [
-      {
-        title: "Forms",
-        url: "#",
-      },
-      {
-        title: "Inputs",
-        url: "#",
-      },
-      {
-        title: "Datas",
-        url: "#",
-        items: [
-          {
-            title: "All",
-            url: "#",
-          },
-          {
-            title: "Filters",
-            url: "#",
-          },
-        ],
-      },
-    ],
   },
   {
-    title: "Inbox",
+    title: "Requests",
     url: "#",
     icon: Inbox,
   },
   {
-    title: "Calendar",
+    title: "Contact",
     url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    icon: ReceiptText,
   },
 ];
 
@@ -164,21 +163,21 @@ export const controlMenuItems = [
       },
       {
         title: "Banner",
-        url: "#",
+        url: ROUTE_PATH.SERVICES.BANNER,
       },
     ],
   },
 
-  {
-    title: "Socials",
-    url: "#",
-    icon: File,
-  },
-  {
-    title: "Services",
-    url: "#",
-    icon: LaptopMinimal,
-  },
+  // {
+  //   title: "Socials",
+  //   url: "#",
+  //   icon: File,
+  // },
+  // {
+  //   title: "Services",
+  //   url: "#",
+  //   icon: LaptopMinimal,
+  // },
   // {
   //   title: "Events",
   //   url: "#",
@@ -197,11 +196,11 @@ export const controlMenuItems = [
 ];
 
 export const supportMenuItems = [
-  {
-    title: "Translation",
-    url: "#",
-    icon: Trash,
-  },
+  // {
+  //   title: "Translation",
+  //   url: "#",
+  //   icon: Trash,
+  // },
   {
     title: "Settings",
     url: "#",

@@ -21,6 +21,7 @@ export { default as TestimonialEditPage } from "./home/TestimonialsEdit.page";
 export { default as ServicePage } from "./services/Services.page";
 export { default as ServiceCreatePage } from "./services/ServicesCreate.page";
 export { default as ServiceEditPage } from "./services/ServicesEdit.page";
+export { default as ServiceBannerPage } from "./services/ServicesBanner.page";
 
 // auth
 export { default as LoginPage } from "./auth/Login.page";

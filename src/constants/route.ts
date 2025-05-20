@@ -45,6 +45,7 @@ export const ROUTE_PATH = {
     CREATE: "/services/create",
     LIST: "/services/list",
     EDIT: "/services/edit/:id",
+    BANNER: "/services/banner",
   },
   // SYSTEM: {
   //   USER_CREATION: '/system/user',
