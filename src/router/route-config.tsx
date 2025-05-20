@@ -11,8 +11,15 @@ import {
   DashboardPage,
   LoginPage,
   VerifyPage,
+  HomePageBannerInfoPage,
+  NotFoundPage,
+  TestimonialPage,
+  TestimonialCreatePage,
+  TestimonialEditPage,
+  ServicePage,
+  ServiceCreatePage,
+  ServiceEditPage,
 } from "@/pages";
-import { Route } from "react-router-dom";
 
 export const RouteConfig = [
   {
@@ -61,48 +68,123 @@ export const RouteConfig = [
   /* Aboutus Banner */
   {
     path: ROUTE_PATH.ABOUTUSBANNER.EDIT,
-    element:(
+    element: (
       <>
-       <PageTitle title="Aboutus Banner Edit" />
-       <AboutusBannerEditPage />
+        <PageTitle title="Aboutus Banner Edit" />
+        <AboutusBannerEditPage />
       </>
     ),
-    access_type:ROUTE_ACCESS.PRIVATE
+    access_type: ROUTE_ACCESS.PRIVATE,
   },
   /* Aboutus Mission Create */
   {
     path: ROUTE_PATH.AboutusMission.CREATE,
-    element:(
+    element: (
       <>
-       <PageTitle title="Aboutus Mission Create" />
-       <AboutusMissionCreatePage />
+        <PageTitle title="Aboutus Mission Create" />
+        <AboutusMissionCreatePage />
       </>
     ),
-    access_type:ROUTE_ACCESS.PRIVATE
+    access_type: ROUTE_ACCESS.PRIVATE,
   },
   /* Aboutus Mission List */
   {
     path: ROUTE_PATH.AboutusMission.LIST,
-    element:(
+    element: (
       <>
-       <PageTitle title="Aboutus Mission List" />
-       <GetMissionPage/>
+        <PageTitle title="Aboutus Mission List" />
+        <GetMissionPage />
       </>
     ),
-    access_type:ROUTE_ACCESS.PRIVATE
+    access_type: ROUTE_ACCESS.PRIVATE,
   },
   /* Aboutus Mission Edit */
   {
     path: ROUTE_PATH.AboutusMission.EDIT,
-    element:(
+    element: (
       <>
-       <PageTitle title="Aboutus Mission Edit" />
-       <EditMissionPage/>
+        <PageTitle title="Aboutus Mission Edit" />
+        <EditMissionPage />
       </>
     ),
-    access_type:ROUTE_ACCESS.PRIVATE
+    access_type: ROUTE_ACCESS.PRIVATE,
   },
-  
+
+  // home routes
+  {
+    path: ROUTE_PATH.HOME.EDIT,
+    element: (
+      <>
+        <PageTitle title="Home Banner Info Edit" />
+        <HomePageBannerInfoPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.TESTIMONIAL.LIST,
+    element: (
+      <>
+        <PageTitle title="Testimonials" />
+        <TestimonialPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.TESTIMONIAL.CREATE,
+    element: (
+      <>
+        <PageTitle title="Create Testimonial" />
+        <TestimonialCreatePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.TESTIMONIAL.EDIT,
+    element: (
+      <>
+        <PageTitle title="Edit Testimonial" />
+        <TestimonialEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
+  // service routes
+
+  {
+    path: ROUTE_PATH.SERVICES.LIST,
+    element: (
+      <>
+        <PageTitle title="Services" />
+        <ServicePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.SERVICES.CREATE,
+    element: (
+      <>
+        <PageTitle title="Create Service" />
+        <ServiceCreatePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.SERVICES.EDIT,
+    element: (
+      <>
+        <PageTitle title="Edit Service" />
+        <ServiceEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
   // auth routes
   {
     path: ROUTE_PATH.LOGIN,
@@ -125,9 +207,9 @@ export const RouteConfig = [
     access_type: ROUTE_ACCESS.AUTH,
   },
   // not found route
-  // {
-  //   path: ROUTE_PATH.NOT_FOUND,
-  //   element: <NotFoundPage />,
-  //   access_type: ROUTE_ACCESS.PUBLIC,
-  // },
+  {
+    path: ROUTE_PATH.NOT_FOUND,
+    element: <NotFoundPage />,
+    access_type: ROUTE_ACCESS.PUBLIC,
+  },
 ];

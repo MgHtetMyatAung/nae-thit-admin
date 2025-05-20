@@ -138,7 +138,7 @@ export default function BlogEditPage() {
             <form action="" onSubmit={handleSubmit(handleCreateBlog)}>
               <div className=" grid grid-cols-1 lg:grid-cols-2 gap-3">
                 <div className=" space-y-1">
-                  <Label htmlFor="title-en" className=" text-gray-600">
+                  <Label htmlFor="title-en" className=" text-gray-500">
                     Title (en)
                   </Label>
                   <Input

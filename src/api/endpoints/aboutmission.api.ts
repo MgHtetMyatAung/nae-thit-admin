@@ -1,41 +1,21 @@
-import { useCreateBlogMutation } from '@/api/endpoints/blog.api';
 import { baseAPI } from "../base.config";
 
 export const missionApi = baseAPI.injectEndpoints({
-    endpoints:(builder)=>({
-        createMission:builder.mutation({
-            query:(data)=>({
-               url:"/pages/aboutmission" ,
-               method:"POST",
-               body:data
-            })
-        }),
-        getMission:builder.query({
-         query:()=>({
-            url:"/pages/aboutmission",
-            method:"GET" 
-         })
-        }),
-        getEachMission:builder.query({
-           query:({id})=>({
-            url:`/pages/aboutmission/${id}`,
-            method:"GET"
-           })
-        }),
-        editMission:builder.mutation({
-            query:({data,id})=>({
-                url:`/pages/aboutmission/${id}`,
-                method:"PUT",
-                body:data
-            })
-        }),
-        deleteMission:builder.mutation({
-          query:({id})=>({
-            url:`/pages/aboutmission/${id}`,
-            method:"DELETE"
-          })  
-        })
-    })
-})
+  endpoints: (builder) => ({
+    createMission: builder.mutation({
+      query: (data) => ({
+        url: "/pages/aboutmission",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    getMission: builder.query({
+      query: () => ({
+        url: "/pages/aboutmission",
+        method: "GET",
+      }),
+    }),
+  }),
+});
 
-export const {useCreateMissionMutation,useGetMissionQuery,useGetEachMissionQuery,useEditMissionMutation,useDeleteMissionMutation} = missionApi;
+export const { useCreateMissionMutation, useGetMissionQuery } = missionApi;

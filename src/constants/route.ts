@@ -20,14 +20,31 @@ export const ROUTE_PATH = {
     EDIT: "/blogs/edit/:blogId",
   },
 
-  ABOUTUSBANNER:{
-    EDIT:"/aboutusbanner/edit"
+  ABOUTUSBANNER: {
+    EDIT: "/aboutusbanner/edit",
   },
 
-  AboutusMission:{
-    CREATE:"/aboutmission/create",
-    LIST:"/aboutmission/list",
-    EDIT:"/aboutmission/edit/:missionid"
+  AboutusMission: {
+    CREATE: "/aboutmission/create",
+    LIST: "/aboutmission/list",
+    EDIT: "/aboutmission/edit",
+  },
+
+  // home page
+  HOME: {
+    EDIT: "/home-banner-info/edit",
+    TESTIMONIAL: {
+      CREATE: "/testimonials/create",
+      LIST: "/testimonials/list",
+      EDIT: "/testimonials/edit/:id",
+    },
+  },
+
+  // service page
+  SERVICES: {
+    CREATE: "/services/create",
+    LIST: "/services/list",
+    EDIT: "/services/edit/:id",
   },
   // SYSTEM: {
   //   USER_CREATION: '/system/user',
@@ -75,6 +92,6 @@ export const ROUTE_PATH = {
   // PROPOSALBASIC:'/proposal-basic',
   // PROPOSALINSUREDWITHOTHERS: '/proposal-other',
 
-  // // FOR NOT FOUND PAGE
-  // NOT_FOUND: '*',
+  // FOR NOT FOUND PAGE
+  NOT_FOUND: "*",
 };
