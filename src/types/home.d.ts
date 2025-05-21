@@ -33,3 +33,13 @@ type TestimonialType = {
   patient_type_my: string;
   _id: string;
 };
+
+type FacilitieType = {
+  _id: string;
+  clinicname_en: string;
+  clinicname_my: string;
+  openinghr_en: string;
+  openinghr_my: string;
+  mapurl: string;
+  photo: string;
+};

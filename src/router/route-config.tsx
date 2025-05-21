@@ -20,6 +20,9 @@ import {
   ServiceCreatePage,
   ServiceEditPage,
   ServiceBannerPage,
+  FacilitiePage,
+  FacilitieCreatePage,
+  FacilitieEditPage,
 } from "@/pages";
 
 export const RouteConfig = [
@@ -148,6 +151,36 @@ export const RouteConfig = [
       <>
         <PageTitle title="Edit Testimonial" />
         <TestimonialEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.FACILITIES.LIST,
+    element: (
+      <>
+        <PageTitle title="Facilities" />
+        <FacilitiePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.FACILITIES.CREATE,
+    element: (
+      <>
+        <PageTitle title="Create Facilitie" />
+        <FacilitieCreatePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.FACILITIES.EDIT,
+    element: (
+      <>
+        <PageTitle title="Edit Facilitie" />
+        <FacilitieEditPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,

@@ -80,6 +80,20 @@ export const controlMenuItems = [
         url: ROUTE_PATH.HOME.EDIT,
       },
       {
+        title: "Facilities",
+        url: "#",
+        items: [
+          {
+            title: "List",
+            url: ROUTE_PATH.HOME.FACILITIES.LIST,
+          },
+          {
+            title: "create",
+            url: ROUTE_PATH.HOME.FACILITIES.CREATE,
+          },
+        ],
+      },
+      {
         title: "Testimonials",
         url: "#",
         items: [

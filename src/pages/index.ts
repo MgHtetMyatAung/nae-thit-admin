@@ -16,6 +16,9 @@ export { default as HomePageBannerInfoPage } from "./home/HomePageBannerInfo.pag
 export { default as TestimonialPage } from "./home/Testimonials.page";
 export { default as TestimonialCreatePage } from "./home/TestimonialsCreate.page";
 export { default as TestimonialEditPage } from "./home/TestimonialsEdit.page";
+export { default as FacilitiePage } from "./home/Facilities.page";
+export { default as FacilitieCreatePage } from "./home/FacilitiesCreate.page";
+export { default as FacilitieEditPage } from "./home/FacilitiesEdit.page";
 
 // service page
 export { default as ServicePage } from "./services/Services.page";

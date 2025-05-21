@@ -38,6 +38,11 @@ export const ROUTE_PATH = {
       LIST: "/testimonials/list",
       EDIT: "/testimonials/edit/:id",
     },
+    FACILITIES: {
+      CREATE: "/facilities/create",
+      LIST: "/facilities/list",
+      EDIT: "/facilities/edit/:id",
+    },
   },
 
   // service page
