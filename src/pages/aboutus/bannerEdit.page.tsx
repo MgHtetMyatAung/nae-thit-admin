@@ -1,7 +1,11 @@
 import { useGetAboutBannerQuery,useEditAboutBannerMutation } from "@/api/endpoints/aboutusbanner.api"
 import { useState, useEffect } from 'react';
-
-interface AboutBannerData {
+import {SubmitHandler, useForm} from "react-hook-form";
+import toast from "react-hot-toast";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+interface FormData {
   // Text fields
   titleen: string;
   titlemy: string;
@@ -17,153 +21,127 @@ interface AboutBannerData {
   homepageblog_my: string;
   introductionen: string;
   introductionmy: string;
-  
-  // Image URLs (from server)
-  bannerbgimg?: string;
-  backgroundblogimg?: string;
-  homepageblogimg?: string;
+  //files
+  bannerbgimgFile: FileList;
+  backgroundblogimgFile: FileList;
+  homepageblogimgFile: FileList;
 }
 
-interface FormData extends Omit<AboutBannerData, 'bannerbgimg' | 'backgroundblogimg' | 'homepageblogimg'> {
-  // File objects for new uploads
-  bannerbgimg: File | null;
-  backgroundblogimg: File | null;
-  homepageblogimg: File | null;
-  
-  // Existing image URLs for display
-  existingBannerBgImg: string;
-  existingBackgroundBlogImg: string;
-  existingHomepageBlogImg: string;
-}
+
 
 const AboutBannerEdit = () => {
+  const {register,setValue,handleSubmit,watch} = useForm<FormData>();
   // Fetch data
-  const { data: aboutBannerData, isLoading, isError } = useGetAboutBannerQuery({});
+  const { data: aboutBannerData, isLoading: GetAboutusLoading, isError } = useGetAboutBannerQuery({});
   const [updateAboutBanner] = useEditAboutBannerMutation();
-  
-  // Form state
-  const [formData, setFormData] = useState<FormData>({
-    // Text fields
-    titleen: '',
-    titlemy: '',
-    abouten: '',
-    aboutmy: '',
-    blogtitleen: '',
-    blogtitlemy: '',
-    blogen: '',
-    blogmy: '',
-    homepageblogtitle_en: '',
-    homepageblogtitle_my: '',
-    homepageblog_en: '',
-    homepageblog_my: '',
-    introductionen: '',
-    introductionmy: '',
-    
-    // File fields
-    bannerbgimg: null,
-    backgroundblogimg: null,
-    homepageblogimg: null,
-    
-    // Existing images
-    existingBannerBgImg: '',
-    existingBackgroundBlogImg: '',
-    existingHomepageBlogImg: ''
-  });
 
-  // When data loads, populate the form
-  useEffect(() => {
-    if (aboutBannerData) {
-      setFormData(prev => ({
-        ...prev,
-        // Text fields
-        titleen: aboutBannerData.data.titleen || '',
-        titlemy: aboutBannerData.data.titlemy || '',
-        abouten: aboutBannerData.data.abouten || '',
-        aboutmy: aboutBannerData.data.aboutmy || '',
-        blogtitleen: aboutBannerData.data.blogtitleen || '',
-        blogtitlemy: aboutBannerData.data.blogtitlemy || '',
-        blogen: aboutBannerData.data.blogen || '',
-        blogmy: aboutBannerData.data.blogmy || '',
-        homepageblogtitle_en: aboutBannerData.data.homepageblogtitle_en || '',
-        homepageblogtitle_my: aboutBannerData.data.homepageblogtitle_my || '',
-        homepageblog_en: aboutBannerData.data.homepageblog_en || '',
-        homepageblog_my: aboutBannerData.data.homepageblog_my || '',
-        introductionen: aboutBannerData.data.introductionen || '',
-        introductionmy: aboutBannerData.data.introductionmy || '',
-        
-        // Existing image URLs
-        existingBannerBgImg: aboutBannerData.data.bannerbgimg || '',
-        existingBackgroundBlogImg: aboutBannerData.data.backgroundblogimg || '',
-        existingHomepageBlogImg: aboutBannerData.data.homepageblogimg || ''
-      }));
-    }
-  }, [aboutBannerData]);
+  /* Existing photos */
+  const [bannerbgimgPreview,setbannerbgimgPreview] = useState<string>("");
+  const [backgroundblogimgPreview,setbackgroundblogimgPreview] = useState<string>("");
+  const [homepgaeblogimgPreview,sethomepgaeblogimgPreview] = useState<string>("");
+  useEffect(()=>{
+    if(!aboutBannerData)return;
+    const Data = aboutBannerData.data;
+    setValue("titleen",Data?.titleen);
+    setValue("titlemy",Data?.titlemy);
+    setValue("abouten",Data?.abouten)
+    setValue("aboutmy",Data?.aboutmy)
+    setValue("introductionen",Data?.introductionen)
+    setValue("introductionmy",Data?.introductionmy)
+    setValue("blogtitleen",Data?.blogtitleen)
+    setValue("blogtitlemy",Data?.blogtitlemy)
+    setValue("blogen",Data?.blogen)
+    setValue("blogmy",Data?.blogmy)
+    setValue("homepageblogtitle_en",Data?.homepageblogtitle_en)
+    setValue("homepageblogtitle_my",Data?.homepageblogtitle_my)
+    setValue("homepageblog_en",Data?.homepageblog_en)
+    setValue("homepageblog_my",Data?.homepageblog_my)
 
-  // Handle text input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+    /* Photos URL*/
+    setbannerbgimgPreview(Data?.bannerbgimg)
+    setbackgroundblogimgPreview(Data?.backgroundblogimg)
+    sethomepgaeblogimgPreview(Data?.homepageblogimg)
+  },[aboutBannerData])
 
-  // Handle file input changes
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    if (files && files.length > 0) {
-      setFormData(prev => ({ ...prev, [name]: files[0] }));
-    }
-  };
+   const bannerbgimgList = watch("bannerbgimgFile");
+   const backgroundbgimgList = watch("backgroundblogimgFile");
+   const homepageblogimgList = watch("homepageblogimgFile");
 
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Create FormData for the request
-    const formDataToSend = new FormData();
-    
-    // Append all text fields
-    const textFields: Array<keyof Omit<FormData, 
-      'bannerbgimg' | 'backgroundblogimg' | 'homepageblogimg' |
-      'existingBannerBgImg' | 'existingBackgroundBlogImg' | 'existingHomepageBlogImg'
-    >> = [
-      'titleen', 'titlemy', 'abouten', 'aboutmy', 
-      'blogtitleen', 'blogtitlemy', 'blogen', 'blogmy',
-      'homepageblogtitle_en', 'homepageblogtitle_my',
-      'homepageblog_en', 'homepageblog_my',
-      'introductionen', 'introductionmy'
-    ];
-    
-    textFields.forEach(field => {
-      formDataToSend.append(field, formData[field]);
-    });
-    
-    // Append files if they were changed
-    if (formData.bannerbgimg) {
-      formDataToSend.append('bannerbgimg', formData.bannerbgimg);
+   useEffect(()=>{
+    if(bannerbgimgList&&bannerbgimgList.length>0){
+      const file = bannerbgimgList[0];
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file (JPEG, PNG, etc.)");
+        return;
+      }
+      setbannerbgimgPreview(URL.createObjectURL(file))
     }
-    if (formData.backgroundblogimg) {
-      formDataToSend.append('backgroundblogimg', formData.backgroundblogimg);
-    }
-    if (formData.homepageblogimg) {
-      formDataToSend.append('homepageblogimg', formData.homepageblogimg);
-    }
-    
-    try {
-      await updateAboutBanner(formDataToSend).unwrap();
-      alert('Update successful!');
-    } catch (error) {
-      console.error('Failed to update:', error);
-      alert('Update failed');
-    }
-  };
+   },[bannerbgimgList])
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading data</div>;
+   useEffect(()=>{
+    if(backgroundbgimgList&&backgroundbgimgList.length>0){
+      const file = backgroundbgimgList[0];
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file (JPEG, PNG, etc.)");
+        return;
+      }
+      setbackgroundblogimgPreview(URL.createObjectURL(file))
+    }
+   },[backgroundbgimgList])
 
+   useEffect(()=>{
+    if(homepageblogimgList&&homepageblogimgList.length>0){
+      const file = homepageblogimgList[0];
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file (JPEG, PNG, etc.)");
+        return;
+      }
+      sethomepgaeblogimgPreview(URL.createObjectURL(file))
+    }
+   },[homepageblogimgList])
+
+  const onSubmit:SubmitHandler<FormData> = async(data)=>{
+     const formData = new FormData();
+     formData.append("titleen", data?.titleen)
+     formData.append("titlemy", data?.titlemy)
+     formData.append("abouten", data?.titleen)
+     formData.append("aboutmy", data?.titlemy)
+     formData.append("blogtitleen", data?.blogtitleen)
+     formData.append("blogtitlemy", data?.blogtitlemy)
+     formData.append("blogen", data?.blogen)
+     formData.append("blogmy", data?.blogmy)
+     formData.append("homepageblogtitle_en", data?. homepageblogtitle_en)
+     formData.append("homepageblogtitle_my", data?. homepageblogtitle_my)
+     formData.append("homepageblog_en", data?. homepageblog_en)
+     formData.append("homepageblog_my", data?. homepageblog_my)
+     formData.append("introductionen",data?.introductionen)
+     formData.append("introductionmy",data?.introductionmy)
+     if(data.bannerbgimgFile && data.bannerbgimgFile.length>0){
+     formData.append("bannerbgimg", data.bannerbgimgFile[0])
+     }
+     if(data.backgroundblogimgFile && data.backgroundblogimgFile.length>0){
+     formData.append("backgroundblogimg", data.backgroundblogimgFile[0])
+     }
+     if(data.homepageblogimgFile && data.homepageblogimgFile.length>0){
+     formData.append("homepageblogimg", data.homepageblogimgFile[0])
+     }
+
+     try {
+       const res = await updateAboutBanner({data:formData}).unwrap();
+       if(res.success){
+        toast.success("Successfully updated the aboutus banner!");
+       }
+     } catch (error) {
+      console.log(error)
+      alert("An error while updating!")
+     }
+  }
+
+  if (GetAboutusLoading) return <div>Loading...</div>;
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-6">Edit About Banner</h1>
-       <h1>{aboutBannerData.data.titlen}</h1>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Text Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* English Fields */}
@@ -171,77 +149,70 @@ const AboutBannerEdit = () => {
             <h2 className="text-xl font-semibold">English Content</h2>
             
             <div>
-              <label className="block mb-1">Title (EN)</label>
-              <input
+              <Label className="block mb-1">Title (EN)</Label>
+              <Input
+                {...register("titleen")}
                 type="text"
                 name="titleen"
-                value={formData.titleen}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
               />
             </div>
             
             <div>
-              <label className="block mb-1">About (EN)</label>
-              <textarea
+              <Label className="block mb-1">About (EN)</Label>
+              <Textarea
+               {...register("abouten")}
                 name="abouten"
-                value={formData.abouten}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
             </div>
             
             <div>
-              <label className="block mb-1">Blog Title (EN)</label>
-              <input
+              <Label className="block mb-1">Blog Title (EN)</Label>
+              <Input
+               {...register("blogtitleen")}
                 type="text"
                 name="blogtitleen"
-                value={formData.blogtitleen}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
               />
             </div>
             
             <div>
-              <label className="block mb-1">Blog Content (EN)</label>
-              <textarea
+              <Label className="block mb-1">Blog Content (EN)</Label>
+              <Textarea
+                {...register("blogen")}
                 name="blogen"
-                value={formData.blogen}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
             </div>
             
             <div>
-              <label className="block mb-1">Homepage Blog Title (EN)</label>
-              <input
+              <Label className="block mb-1">Homepage Blog Title (EN)</Label>
+              <Input
+                {...register("homepageblogtitle_en")}
                 type="text"
                 name="homepageblogtitle_en"
-                value={formData.homepageblogtitle_en}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
               />
             </div>
             
             <div>
-              <label className="block mb-1">Homepage Blog Content (EN)</label>
-              <textarea
+              <Label className="block mb-1">Homepage Blog Content (EN)</Label>
+              <Textarea
+                {...register("homepageblog_en")}
                 name="homepageblog_en"
-                value={formData.homepageblog_en}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
             </div>
             
             <div>
-              <label className="block mb-1">Introduction (EN)</label>
-              <textarea
+              <Label className="block mb-1">Introduction (EN)</Label>
+              <Textarea
+                {...register("introductionen")}
                 name="introductionen"
-                value={formData.introductionen}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
@@ -253,77 +224,70 @@ const AboutBannerEdit = () => {
             <h2 className="text-xl font-semibold">Myanmar Content</h2>
             
             <div>
-              <label className="block mb-1">Title (MY)</label>
-              <input
+              <Label className="block mb-1">Title (MY)</Label>
+              <Input
+               {...register("titlemy")}
                 type="text"
                 name="titlemy"
-                value={formData.titlemy}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
               />
             </div>
             
             <div>
-              <label className="block mb-1">About (MY)</label>
-              <textarea
+              <Label className="block mb-1">About (MY)</Label>
+              <Textarea
+               {...register("aboutmy")}
                 name="aboutmy"
-                value={formData.aboutmy}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
             </div>
             
             <div>
-              <label className="block mb-1">Blog Title (MY)</label>
-              <input
+              <Label className="block mb-1">Blog Title (MY)</Label>
+              <Input
+               {...register("blogtitlemy")}
                 type="text"
                 name="blogtitlemy"
-                value={formData.blogtitlemy}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
               />
             </div>
             
             <div>
-              <label className="block mb-1">Blog Content (MY)</label>
-              <textarea
+              <Label className="block mb-1">Blog Content (MY)</Label>
+              <Textarea
+                {...register("blogmy")}
                 name="blogmy"
-                value={formData.blogmy}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
             </div>
             
             <div>
-              <label className="block mb-1">Homepage Blog Title (MY)</label>
-              <input
+              <Label className="block mb-1">Homepage Blog Title (MY)</Label>
+              <Input
+                {...register("homepageblogtitle_my")}
                 type="text"
                 name="homepageblogtitle_my"
-                value={formData.homepageblogtitle_my}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
               />
             </div>
             
             <div>
-              <label className="block mb-1">Homepage Blog Content (MY)</label>
-              <textarea
+              <Label className="block mb-1">Homepage Blog Content (MY)</Label>
+              <Textarea
+                {...register("homepageblog_my")}
                 name="homepageblog_my"
-                value={formData.homepageblog_my}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
             </div>
             
             <div>
-              <label className="block mb-1">Introduction (MY)</label>
-              <textarea
+              <Label className="block mb-1">Introduction (MY)</Label>
+              <Textarea
+                 {...register("introductionmy")}
                 name="introductionmy"
-                value={formData.introductionmy}
-                onChange={handleInputChange}
                 className="w-full p-2 border rounded"
                 rows={4}
               />
@@ -335,21 +299,40 @@ const AboutBannerEdit = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {/* Banner Background Image */}
           <div>
-            <label className="block mb-2">Banner Background Image</label>
-            {formData.existingBannerBgImg && (
-              <div className="mb-2">
-                <p className="text-sm mb-1">Current Image:</p>
-                <img 
-                  src={formData.existingBannerBgImg} 
-                  alt="Current Banner Background" 
-                  className="w-full h-32 object-cover rounded"
-                />
-              </div>
+            <Label className="block mb-2">Banner Background Image</Label>
+            {bannerbgimgPreview&&(
+             <div className="relative group w-fit bg-white">
+             <img
+               src={bannerbgimgPreview}
+               alt="Preview"
+               className=" h-40 w-auto object-cover rounded-lg border border-gray-200"
+             />
+             <button
+               type="button"
+               onClick={()=>setbannerbgimgPreview("")}
+               className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+               aria-label="Remove image"
+             >
+               <svg
+                 className="w-4 h-4"
+                 fill="none"
+                 stroke="currentColor"
+                 viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg"
+               >
+                 <path
+                   strokeLinecap="round"
+                   strokeLinejoin="round"
+                   strokeWidth={2}
+                   d="M6 18L18 6M6 6l12 12"
+                 />
+               </svg>
+             </button>
+           </div>
             )}
             <input
+             {...register("bannerbgimgFile")}
               type="file"
-              name="bannerbgimg"
-              onChange={handleFileChange}
               className="w-full p-2 border rounded"
               accept="image/*"
             />
@@ -358,20 +341,40 @@ const AboutBannerEdit = () => {
           {/* Background Blog Image */}
           <div>
             <label className="block mb-2">Background Blog Image</label>
-            {formData.existingBackgroundBlogImg && (
-              <div className="mb-2">
-                <p className="text-sm mb-1">Current Image:</p>
-                <img 
-                  src={formData.existingBackgroundBlogImg} 
-                  alt="Current Blog Background" 
-                  className="w-full h-32 object-cover rounded"
-                />
-              </div>
+            {backgroundblogimgPreview&&(
+                /* Asan */
+                <div className="relative group w-fit bg-white">
+                      <img
+                        src={backgroundblogimgPreview}
+                        alt="Preview"
+                        className=" h-40 w-auto object-cover rounded-lg border border-gray-200"
+                      />
+                      <button
+                        type="button"
+                        onClick={()=>setbackgroundblogimgPreview("")}
+                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                        aria-label="Remove image"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </div>
             )}
             <input
+             {...register("backgroundblogimgFile")}
               type="file"
-              name="backgroundblogimg"
-              onChange={handleFileChange}
               className="w-full p-2 border rounded"
               accept="image/*"
             />
@@ -380,20 +383,39 @@ const AboutBannerEdit = () => {
           {/* Homepage Blog Image */}
           <div>
             <label className="block mb-2">Homepage Blog Image</label>
-            {formData.existingHomepageBlogImg && (
-              <div className="mb-2">
-                <p className="text-sm mb-1">Current Image:</p>
-                <img 
-                  src={formData.existingHomepageBlogImg} 
-                  alt="Current Homepage Blog Image" 
-                  className="w-full h-32 object-cover rounded"
-                />
-              </div>
+            {homepgaeblogimgPreview&&(
+              <div className="relative group w-fit bg-white">
+              <img
+                src={homepgaeblogimgPreview}
+                alt="Preview"
+                className=" h-40 w-auto object-cover rounded-lg border border-gray-200"
+              />
+              <button
+                type="button"
+                onClick={()=>sethomepgaeblogimgPreview("")}
+                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Remove image"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
             )}
             <input
+              {...register("homepageblogimgFile")}
               type="file"
-              name="homepageblogimg"
-              onChange={handleFileChange}
               className="w-full p-2 border rounded"
               accept="image/*"
             />
