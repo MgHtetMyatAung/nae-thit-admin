@@ -10,7 +10,7 @@ export { default as AboutusBannerEditPage } from "./aboutus/bannerEdit.page";
 export { default as AboutusMissionCreatePage } from "./aboutus/mission.page";
 export { default as GetMissionPage } from "./aboutus/getMission.page";
 export { default as EditMissionPage } from "./aboutus/MissionEdit.page";
-
+export {default as AddTeamMemberPage} from "./aboutus/addmember.page"
 // home page
 export { default as HomePageBannerInfoPage } from "./home/HomePageBannerInfo.page";
 export { default as TestimonialPage } from "./home/Testimonials.page";

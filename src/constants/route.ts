@@ -27,9 +27,12 @@ export const ROUTE_PATH = {
   AboutusMission: {
     CREATE: "/aboutmission/create",
     LIST: "/aboutmission/list",
-    EDIT: "/aboutmission/edit",
+    EDIT: "/aboutmission/edit/:id",
   },
 
+  AboutTeamMember:{
+    CREATE:"/teammember/create"
+  },
   // home page
   HOME: {
     EDIT: "/home-banner-info/edit",

@@ -2,8 +2,12 @@
 import { useCreateMissionMutation } from "@/api/endpoints/aboutmission.api";
 import { useState, FormEvent, ChangeEvent } from "react";
 import toast, { Toaster } from "react-hot-toast";
-
-interface MissionData {
+import {useForm} from "react-hook-form"
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { SubmitHandler } from "react-hook-form";
+interface MissionDataType {
   titleen: string;
   titlemy: string;
   missionen: string;
@@ -12,41 +16,19 @@ interface MissionData {
 
 const AboutMissionCreate = () => {
   const [createMission, { isLoading }] = useCreateMissionMutation();
-  const [formData, setFormData] = useState<MissionData>({
-    titleen: "",
-    titlemy: "",
-    missionen: "",
-    missionmy: "",
-  });
+  const {register,handleSubmit} = useForm<MissionDataType>();
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const HandleCreateMission:SubmitHandler<MissionDataType> = async(data)=>{
     try {
-      await createMission(formData).unwrap();
-      toast.success("Mission created successfully!");
-      // Reset form after successful submission
-      setFormData({
-        titleen: "",
-        titlemy: "",
-        missionen: "",
-        missionmy: "",
-      });
-    } catch (error: any) {
-      toast.error(
-        error?.data?.message || "Failed to create mission. Please try again."
-      );
+      const res = await createMission(data).unwrap();
+      if(res.success){
+       toast.success(res.message)
+      }
+    } catch (error:any) {
+      console.log(error)
+      alert(error?.data?.message)
     }
-  };
+  }
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
@@ -65,7 +47,7 @@ const AboutMissionCreate = () => {
         Create New Mission
       </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit(HandleCreateMission)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* English Section */}
           <div className="space-y-4">
@@ -74,18 +56,17 @@ const AboutMissionCreate = () => {
             </h3>
 
             <div>
-              <label
+              <Label
                 htmlFor="titleen"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Title (English)
-              </label>
-              <input
+              </Label>
+              <Input
+               {...register("titleen")}
                 type="text"
                 id="titleen"
                 name="titleen"
-                value={formData.titleen}
-                onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter English title"
                 required
@@ -93,17 +74,16 @@ const AboutMissionCreate = () => {
             </div>
 
             <div>
-              <label
+              <Label
                 htmlFor="missionen"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Mission (English)
-              </label>
-              <textarea
+              </Label>
+              <Textarea
+               {...register("missionen")}
                 id="missionen"
                 name="missionen"
-                value={formData.missionen}
-                onChange={handleChange}
                 rows={4}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter English mission statement"
@@ -119,18 +99,17 @@ const AboutMissionCreate = () => {
             </h3>
 
             <div>
-              <label
+              <Label
                 htmlFor="titlemy"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Title (Myanmar)
-              </label>
-              <input
+              </Label>
+              <Input
+                {...register("titlemy")}
                 type="text"
                 id="titlemy"
                 name="titlemy"
-                value={formData.titlemy}
-                onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter Myanmar title"
                 required
@@ -138,17 +117,16 @@ const AboutMissionCreate = () => {
             </div>
 
             <div>
-              <label
+              <Label
                 htmlFor="missionmy"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 Mission (Myanmar)
-              </label>
-              <textarea
+              </Label>
+              <Textarea
+               {...register("missionmy")}
                 id="missionmy"
                 name="missionmy"
-                value={formData.missionmy}
-                onChange={handleChange}
                 rows={4}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter Myanmar mission statement"

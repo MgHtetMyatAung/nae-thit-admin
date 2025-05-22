@@ -6,7 +6,7 @@ export const aboutbannerApi = baseAPI.injectEndpoints({
             query:()=>({url:"/pages/aboutbannergetall", method:"GET"})
         }),
         editAboutBanner: builder.mutation({
-            query:(data)=>({
+            query:({data})=>({
              url:"/pages/aboutbanner",
              method:"PUT",
              body:data

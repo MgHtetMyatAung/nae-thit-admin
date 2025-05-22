@@ -8,6 +8,7 @@ import {
   AboutusMissionCreatePage,
   GetMissionPage,
   EditMissionPage,
+  AddTeamMemberPage,
   DashboardPage,
   LoginPage,
   VerifyPage,
@@ -24,6 +25,7 @@ import {
   FacilitieCreatePage,
   FacilitieEditPage,
 } from "@/pages";
+import { Route } from "react-router-dom";
 
 export const RouteConfig = [
   {
@@ -113,7 +115,18 @@ export const RouteConfig = [
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
   },
-
+  /* Member Add */
+  {
+    path: ROUTE_PATH.AboutTeamMember.CREATE,
+    element: (
+      <>
+        <PageTitle title="Aboutus Add Teammember" />
+        <AddTeamMemberPage/>
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+ 
   // home routes
   {
     path: ROUTE_PATH.HOME.EDIT,

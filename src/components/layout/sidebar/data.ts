@@ -157,12 +157,8 @@ export const controlMenuItems = [
         url: ROUTE_PATH.AboutusMission.LIST,
       },
       {
-        title: "Edit Mission",
-        url: ROUTE_PATH.AboutusMission.EDIT,
-      },
-      {
-        title: "Testimonials",
-        url: "#",
+        title: "Add Team Member",
+        url: ROUTE_PATH.AboutTeamMember.CREATE,
       },
     ],
   },
