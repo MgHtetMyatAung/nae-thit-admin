@@ -30,6 +30,9 @@ export const ROUTE_PATH = {
     EDIT: "/aboutmission/edit/:id",
   },
 
+  AboutTeamMember:{
+    CREATE:"/teammember/create"
+  },
   // home page
   HOME: {
     EDIT: "/home-banner-info/edit",
