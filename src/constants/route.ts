@@ -30,8 +30,8 @@ export const ROUTE_PATH = {
     EDIT: "/aboutmission/edit/:id",
   },
 
-  AboutTeamMember:{
-    CREATE:"/teammember/create"
+  AboutTeamMember: {
+    CREATE: "/teammember/create",
   },
   // home page
   HOME: {
@@ -83,6 +83,8 @@ export const ROUTE_PATH = {
   //   FOR AUTH PAGES
   LOGIN: "/signin",
   VERIFY: "/verify",
+  RESET_PASSWORD: "/reset-password",
+  RESET_PASSWORD_VERIFY: "/reset-password-verify",
   // RESET_PASSWORD: '/reset-password',
   // SIGNUP: '/signup',
   // FORG0T_PASSWORD: '/forgot-password',

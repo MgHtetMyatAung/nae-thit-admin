@@ -10,7 +10,7 @@ export { default as AboutusBannerEditPage } from "./aboutus/bannerEdit.page";
 export { default as AboutusMissionCreatePage } from "./aboutus/mission.page";
 export { default as GetMissionPage } from "./aboutus/getMission.page";
 export { default as EditMissionPage } from "./aboutus/MissionEdit.page";
-export {default as AddTeamMemberPage} from "./aboutus/addmember.page"
+export { default as AddTeamMemberPage } from "./aboutus/addmember.page";
 // home page
 export { default as HomePageBannerInfoPage } from "./home/HomePageBannerInfo.page";
 export { default as TestimonialPage } from "./home/Testimonials.page";
@@ -29,6 +29,8 @@ export { default as ServiceBannerPage } from "./services/ServicesBanner.page";
 // auth
 export { default as LoginPage } from "./auth/Login.page";
 export { default as VerifyPage } from "./auth/Verify.page";
+export { default as ResetPasswordPage } from "./auth/ResetPassword.page";
+export { default as ResetPasswordVerifyPage } from "./auth/ResetPasswordVerify.page";
 
 // not found
 export { default as NotFoundPage } from "./404/NotFound.page";

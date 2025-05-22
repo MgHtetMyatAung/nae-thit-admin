@@ -24,8 +24,9 @@ import {
   FacilitiePage,
   FacilitieCreatePage,
   FacilitieEditPage,
+  ResetPasswordPage,
+  ResetPasswordVerifyPage,
 } from "@/pages";
-import { Route } from "react-router-dom";
 
 export const RouteConfig = [
   {
@@ -121,12 +122,12 @@ export const RouteConfig = [
     element: (
       <>
         <PageTitle title="Aboutus Add Teammember" />
-        <AddTeamMemberPage/>
+        <AddTeamMemberPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
   },
- 
+
   // home routes
   {
     path: ROUTE_PATH.HOME.EDIT,
@@ -259,6 +260,26 @@ export const RouteConfig = [
       <>
         {/* <PageTitle title="Veri" /> */}
         <VerifyPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.AUTH,
+  },
+  {
+    path: ROUTE_PATH.RESET_PASSWORD,
+    element: (
+      <>
+        <PageTitle title="Reset Password" />
+        <ResetPasswordPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.AUTH,
+  },
+  {
+    path: ROUTE_PATH.RESET_PASSWORD_VERIFY,
+    element: (
+      <>
+        <PageTitle title="Reset Password Verify" />
+        <ResetPasswordVerifyPage />
       </>
     ),
     access_type: ROUTE_ACCESS.AUTH,
