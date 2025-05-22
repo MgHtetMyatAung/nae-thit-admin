@@ -15,7 +15,26 @@ export const missionApi = baseAPI.injectEndpoints({
         method: "GET",
       }),
     }),
+    getEachMission:builder.query({
+      query:(MissionId)=>({
+       url:`/pages/aboutmission/${MissionId}`,
+       method:"GET"
+      })
+    }),
+    editMission:builder.mutation({
+      query:({id,data})=>({
+        url:`/pages/aboutmission/${id}`,
+        method:"PUT",
+        body:data
+      })
+    }),
+    deleteMission:builder.mutation({
+      query:({id})=>({
+        url:`/pages/aboutmission/${id}`,
+        method:"DELETE"
+      })
+    })
   }),
 });
 
-export const { useCreateMissionMutation, useGetMissionQuery } = missionApi;
+export const { useCreateMissionMutation, useGetMissionQuery, useGetEachMissionQuery,useEditMissionMutation,useDeleteMissionMutation } = missionApi;

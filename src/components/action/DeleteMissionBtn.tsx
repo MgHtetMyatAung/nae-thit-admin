@@ -13,15 +13,18 @@ import {
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function DeleteMissionBtn({ missionId }: { missionId: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [deleteMission, { isLoading }] = useDeleteMissionMutation();
+  const [deleteMission,{isLoading}] = useDeleteMissionMutation();
+  const navigate = useNavigate()
   const handleDeleteMission= async () => {
     try {
       const res = await deleteMission({ id: missionId }).unwrap();
       toast.success(res.message);
       setIsOpen(false);
+      navigate("/aboutmission/list")
     } catch (error) {
       console.log(error);
     }
