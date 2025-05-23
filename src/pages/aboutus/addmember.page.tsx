@@ -33,6 +33,7 @@ export default function AddTeamMember(){
           if(res.success){
              toast.success(res?.message||"Successful!")
              setImageUrlPreview(null);
+             navigate("/teammember/list")
           }
        } catch (error:any) {
          console.log(error)

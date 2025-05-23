@@ -11,6 +11,8 @@ export { default as AboutusMissionCreatePage } from "./aboutus/mission.page";
 export { default as GetMissionPage } from "./aboutus/getMission.page";
 export { default as EditMissionPage } from "./aboutus/MissionEdit.page";
 export {default as AddTeamMemberPage} from "./aboutus/addmember.page"
+export {default as GetAllMemberPage} from "./aboutus/getAllMembers.page"
+export {default as EditMemberPage} from "./aboutus/editmember.page"
 // home page
 export { default as HomePageBannerInfoPage } from "./home/HomePageBannerInfo.page";
 export { default as TestimonialPage } from "./home/Testimonials.page";

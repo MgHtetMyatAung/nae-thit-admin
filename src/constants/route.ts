@@ -31,7 +31,9 @@ export const ROUTE_PATH = {
   },
 
   AboutTeamMember:{
-    CREATE:"/teammember/create"
+    CREATE:"/teammember/create",
+    LIST:'/teammember/list',
+    EDIT:"teammember/edit/:id"
   },
   // home page
   HOME: {
