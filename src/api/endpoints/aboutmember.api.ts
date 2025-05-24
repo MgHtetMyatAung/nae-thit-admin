@@ -1,4 +1,6 @@
+import { useGetAboutBannerQuery } from '@/api/endpoints/aboutusbanner.api';
 import { baseAPI } from "../base.config";
+import { url } from 'inspector';
 
 export const memberApi = baseAPI.injectEndpoints({
     endpoints:(builder)=>({
@@ -8,8 +10,33 @@ export const memberApi = baseAPI.injectEndpoints({
                 method:"POST",
                 body:data
             })
+        }),
+        getAllMember:builder.query({
+            query:()=>({
+                url:"/pages/teammember",
+                method:"GET"
+            })
+        }),
+        deleteMember:builder.mutation({
+            query:({id})=>({
+                url:`/pages/teammember/${id}`,
+                method:"DELETE"
+            })
+        }),
+        getEachMember:builder.query({
+            query:({memberid})=>({
+                url:`/pages/teammember/${memberid}`,
+                method:"GET"
+            })
+        }),
+        editMember:builder.mutation({
+          query:({memberid,data})=>({
+              url:`/pages/teammember/${memberid}`,
+              method:"PUT",
+              body:data
+          }) 
         })
     })
 })
 
-export const {useCreateMemberMutation} = memberApi;
+export const {useCreateMemberMutation,useGetAllMemberQuery, useDeleteMemberMutation, useGetEachMemberQuery, useEditMemberMutation} = memberApi;

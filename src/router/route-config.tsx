@@ -9,6 +9,8 @@ import {
   GetMissionPage,
   EditMissionPage,
   AddTeamMemberPage,
+  GetAllMemberPage,
+  EditMemberPage,
   DashboardPage,
   LoginPage,
   VerifyPage,
@@ -123,6 +125,29 @@ export const RouteConfig = [
       <>
         <PageTitle title="Aboutus Add Teammember" />
         <AddTeamMemberPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  /* Member List */
+  {
+    path: ROUTE_PATH.AboutTeamMember.LIST,
+    element: (
+      <>
+        <PageTitle title="Our Teammember" />
+        <GetAllMemberPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
+  /* Member Edit*/
+  {
+    path: ROUTE_PATH.AboutTeamMember.EDIT,
+    element: (
+      <>
+        <PageTitle title="Our Teammember Edit" />
+        <EditMemberPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,

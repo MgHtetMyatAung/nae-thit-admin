@@ -1,61 +1,84 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useGetEachMemberQuery, useEditMemberMutation } from "@/api/endpoints/aboutmember.api";
+import {useForm, SubmitHandler} from "react-hook-form"
 import { useEffect, useState } from "react";
-import { useCreateMemberMutation } from "@/api/endpoints/aboutmember.api";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import { StringDecoder } from "string_decoder";
 import { useNavigate } from "react-router-dom";
-interface FormDataType {
-  name_en: string;
-  name_my: string;
-  position_en: string;
-  position_my: string;
-  memberphoto: FileList;
+interface FormData{
+name_en:string,
+name_my:string,
+position_en:string,
+position_my:string,
+memberphoto:FileList
 }
-export default function AddTeamMember() {
-  const navigate = useNavigate();
-  const [createMember, { isLoading }] = useCreateMemberMutation();
-  const [imageURlPreview, setImageUrlPreview] = useState<string | null>(null);
-  const { register, handleSubmit, watch } = useForm<FormDataType>();
+export default function EditMemberPage() {
+  const { id:memberid } = useParams();
+  const {data:MemberData, isLoading:fetchMemberLoading} = useGetEachMemberQuery({memberid});
+  const [editMember, {isLoading:editMemberLoading}] = useEditMemberMutation();
+  const {register,setValue, handleSubmit, watch} = useForm<FormData>();
+  const [memberimgPreview, setMemberImgPreview] = useState<string>("");
 
-  const onSubmit: SubmitHandler<FormDataType> = async (data) => {
+  useEffect(()=>{
+    if(!MemberData) return;
+    setValue("name_en",MemberData?.member?.name?.en);
+    setValue("name_my",MemberData?.member?.name?.my);
+    setValue("position_en",MemberData?.member?.position?.en);
+    setValue("position_my",MemberData?.member?.position?.my);
+
+    setMemberImgPreview(MemberData?.member?.photo);
+  },[MemberData])
+  const navigate = useNavigate()
+  const memberPhotoFileList = watch("memberphoto");
+  
+  useEffect(()=>{
+    if(memberPhotoFileList&&memberPhotoFileList.length>0){
+        const file = memberPhotoFileList[0];
+        if (!file.type.startsWith("image/")) {
+            alert("Please select an image file (JPEG, PNG, etc.)");
+            return;
+          }
+        setMemberImgPreview(URL.createObjectURL(file))
+    }
+  },[memberPhotoFileList])
+
+  const onSubmit:SubmitHandler<FormData> = async(data)=>{
     const formData = new FormData();
-    formData.append("name_en", data?.name_en);
-    formData.append("name_my", data?.name_my);
-    formData.append("position_en", data?.position_en);
-    formData.append("position_my", data?.position_my);
-    if (data.memberphoto && data.memberphoto.length > 0) {
-      formData.append("memberphoto", data?.memberphoto[0]);
+    formData.append("name_en", data?.name_en)
+    formData.append("name_my", data?.name_my)
+    formData.append("position_en", data?.position_en)
+    formData.append("position_my", data?.position_my)
+    if(data?.memberphoto && data?.memberphoto.length>0){
+        formData.append("memberphoto",data?.memberphoto[0])
     }
-    try {
-      const res = await createMember(formData).unwrap();
-      if (res.success) {
-        toast.success(res?.message || "Successful!");
-        setImageUrlPreview(null);
-        navigate("/teammember/list");
-      }
-    } catch (error: any) {
-      console.log(error);
-      toast.error(error?.data?.message || "An error occured!");
-    }
-  };
 
-  const memeberphotoList = watch("memberphoto");
-  useEffect(() => {
-    if (memeberphotoList && memeberphotoList.length > 0) {
-      const file = memeberphotoList[0];
-      if (!file.type.startsWith("image/")) {
-        alert("Please select an image file (JPEG, PNG, etc.)");
-        return;
-      }
-      setImageUrlPreview(URL.createObjectURL(file));
+    try {
+        const res = await editMember({memberid:memberid, data:formData}).unwrap();
+        if(res.success){
+            toast.success(res?.message||"Succesfully edited the member!")
+            navigate("/teammember/list")
+        }
+    } catch (error) {
+        console.log(error);
+        toast.error("An error occured while updating the member!")
     }
-  }, [memeberphotoList]);
+  }
   return (
     <div>
-      <h1>Add team member!</h1>
+      <h1>{MemberData?.member?.name?.en}</h1>
+      <div className="flex justify-between">
+        <h2>Our Team Members</h2>
+        <Link to="/teammember/list">
+          <h2 className="text-blue-600 hover:text-blue-900 hover:text-xl">
+            Member List
+          </h2>
+        </Link>
+      </div>
+
       <div className=" mt-5">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className=" grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -110,16 +133,16 @@ export default function AddTeamMember() {
             </div>
             <div className={`flex flex-col col-span-1 lg:col-span-2`}>
               <Label className=" text-gray-600 mb-2">Upload Image</Label>
-              {imageURlPreview && (
+              {memberimgPreview && (
                 <div className="relative group w-fit bg-white">
                   <img
-                    src={imageURlPreview}
-                    alt="Preview"
+                    src={memberimgPreview}
+                    alt="Team Member Photo"
                     className=" h-40 w-auto object-cover rounded-lg border border-gray-200"
                   />
                   <button
                     type="button"
-                    onClick={() => setImageUrlPreview("")}
+                    onClick={() => setMemberImgPreview("")}
                     className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                     aria-label="Remove image"
                   >
@@ -150,7 +173,7 @@ export default function AddTeamMember() {
               type="submit"
               className=" bg-secondary-yellow text-white w-fit hover:bg-secondary-yellow"
             >
-              {isLoading ? "..Posting" : " Create"}
+             {editMemberLoading? "..Posting" : " Create"}
             </Button>
           </div>
         </form>

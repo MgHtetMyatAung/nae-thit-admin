@@ -160,6 +160,10 @@ export const controlMenuItems = [
         title: "Add Team Member",
         url: ROUTE_PATH.AboutTeamMember.CREATE,
       },
+      {
+        title: "Team Members List",
+        url: ROUTE_PATH.AboutTeamMember.LIST,
+      },
     ],
   },
   {
