@@ -84,6 +84,18 @@ export const homeApi = baseAPI.injectEndpoints({
       }),
       invalidatesTags: [tagTypeData.Facilities],
     }),
+    getCountDatas: build.query({
+      query: () => ({
+        url: `/pages/postcounts`,
+        method: "GET",
+      }),
+      providesTags: [
+        tagTypeData.Facilities,
+        tagTypeData.Service,
+        tagTypeData.Testimonial,
+        tagTypeData.Blog,
+      ],
+    }),
   }),
 });
 
@@ -100,4 +112,5 @@ export const {
   useCreateFacilitieMutation,
   useEditFacilitieMutation,
   useDeleteFacilitieMutation,
+  useGetCountDatasQuery,
 } = homeApi;

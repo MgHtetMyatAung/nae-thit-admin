@@ -1,8 +1,9 @@
 import { useLoginMutation } from "@/api/endpoints/auth.api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ROUTE_PATH } from "@/constants/route";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -40,6 +41,11 @@ export default function LoginPage() {
           <Button className=" w-full mt-2 bg-secondary-yellow hover:bg-secondary-yellow text-white">
             {isLoading ? "..." : "Login"}
           </Button>
+          <div>
+            <Link to={ROUTE_PATH.RESET_PASSWORD} className=" text-sm underline">
+              Forgot Password
+            </Link>
+          </div>
         </form>
       </div>
     </div>

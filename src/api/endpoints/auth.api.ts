@@ -20,6 +20,28 @@ export const authApi = baseAPI.injectEndpoints({
         body: body,
       }),
     }),
+    resetPasswordVerify: build.mutation({
+      query: (body) => ({
+        url: `/admin/resetpasswordverify`,
+        method: "POST",
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
+        body: body,
+        // redirect: "follow",
+      }),
+    }),
+    resetPassword: build.mutation({
+      query: (body) => ({
+        url: `/admin/resetpassword`,
+        method: "POST",
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
+        body: body,
+        // redirect: "follow",
+      }),
+    }),
     logout: build.mutation({
       query: (body) => ({
         url: `/admin/loginverify`,
@@ -31,4 +53,9 @@ export const authApi = baseAPI.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useLoginMutation, useVerifyMutation } = authApi;
+export const {
+  useLoginMutation,
+  useVerifyMutation,
+  useResetPasswordMutation,
+  useResetPasswordVerifyMutation,
+} = authApi;

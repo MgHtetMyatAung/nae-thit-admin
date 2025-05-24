@@ -43,3 +43,33 @@ type FacilitieType = {
   mapurl: string;
   photo: string;
 };
+
+type CountDatasType = {
+  success: boolean;
+  formattedCountData: {
+    services: {
+      title: string;
+      count: number;
+    };
+    members: {
+      title: string;
+      count: number;
+    };
+    usermessageCount: {
+      title: string;
+      count: number;
+    };
+    clinicCount: {
+      title: string;
+      count: number;
+    };
+    testimonalsCount: {
+      title: string;
+      count: number;
+    };
+    blogsCount: {
+      title: string;
+      count: number;
+    };
+  };
+};

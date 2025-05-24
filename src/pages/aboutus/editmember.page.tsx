@@ -3,70 +3,76 @@ import { useParams } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useGetEachMemberQuery, useEditMemberMutation } from "@/api/endpoints/aboutmember.api";
-import {useForm, SubmitHandler} from "react-hook-form"
+import {
+  useGetEachMemberQuery,
+  useEditMemberMutation,
+} from "@/api/endpoints/aboutmember.api";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { StringDecoder } from "string_decoder";
 import { useNavigate } from "react-router-dom";
-interface FormData{
-name_en:string,
-name_my:string,
-position_en:string,
-position_my:string,
-memberphoto:FileList
+interface FormData {
+  name_en: string;
+  name_my: string;
+  position_en: string;
+  position_my: string;
+  memberphoto: FileList;
 }
 export default function EditMemberPage() {
-  const { id:memberid } = useParams();
-  const {data:MemberData, isLoading:fetchMemberLoading} = useGetEachMemberQuery({memberid});
-  const [editMember, {isLoading:editMemberLoading}] = useEditMemberMutation();
-  const {register,setValue, handleSubmit, watch} = useForm<FormData>();
+  const { id: memberid } = useParams();
+  const { data: MemberData } = useGetEachMemberQuery({ memberid });
+  const [editMember, { isLoading: editMemberLoading }] =
+    useEditMemberMutation();
+  const { register, setValue, handleSubmit, watch } = useForm<FormData>();
   const [memberimgPreview, setMemberImgPreview] = useState<string>("");
 
-  useEffect(()=>{
-    if(!MemberData) return;
-    setValue("name_en",MemberData?.member?.name?.en);
-    setValue("name_my",MemberData?.member?.name?.my);
-    setValue("position_en",MemberData?.member?.position?.en);
-    setValue("position_my",MemberData?.member?.position?.my);
+  useEffect(() => {
+    if (!MemberData) return;
+    setValue("name_en", MemberData?.member?.name?.en);
+    setValue("name_my", MemberData?.member?.name?.my);
+    setValue("position_en", MemberData?.member?.position?.en);
+    setValue("position_my", MemberData?.member?.position?.my);
 
     setMemberImgPreview(MemberData?.member?.photo);
-  },[MemberData])
-  const navigate = useNavigate()
+  }, [MemberData]);
+  const navigate = useNavigate();
   const memberPhotoFileList = watch("memberphoto");
-  
-  useEffect(()=>{
-    if(memberPhotoFileList&&memberPhotoFileList.length>0){
-        const file = memberPhotoFileList[0];
-        if (!file.type.startsWith("image/")) {
-            alert("Please select an image file (JPEG, PNG, etc.)");
-            return;
-          }
-        setMemberImgPreview(URL.createObjectURL(file))
-    }
-  },[memberPhotoFileList])
 
-  const onSubmit:SubmitHandler<FormData> = async(data)=>{
+  useEffect(() => {
+    if (memberPhotoFileList && memberPhotoFileList.length > 0) {
+      const file = memberPhotoFileList[0];
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file (JPEG, PNG, etc.)");
+        return;
+      }
+      setMemberImgPreview(URL.createObjectURL(file));
+    }
+  }, [memberPhotoFileList]);
+
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     const formData = new FormData();
-    formData.append("name_en", data?.name_en)
-    formData.append("name_my", data?.name_my)
-    formData.append("position_en", data?.position_en)
-    formData.append("position_my", data?.position_my)
-    if(data?.memberphoto && data?.memberphoto.length>0){
-        formData.append("memberphoto",data?.memberphoto[0])
+    formData.append("name_en", data?.name_en);
+    formData.append("name_my", data?.name_my);
+    formData.append("position_en", data?.position_en);
+    formData.append("position_my", data?.position_my);
+    if (data?.memberphoto && data?.memberphoto.length > 0) {
+      formData.append("memberphoto", data?.memberphoto[0]);
     }
 
     try {
-        const res = await editMember({memberid:memberid, data:formData}).unwrap();
-        if(res.success){
-            toast.success(res?.message||"Succesfully edited the member!")
-            navigate("/teammember/list")
-        }
+      const res = await editMember({
+        memberid: memberid,
+        data: formData,
+      }).unwrap();
+      if (res.success) {
+        toast.success(res?.message || "Succesfully edited the member!");
+        navigate("/teammember/list");
+      }
     } catch (error) {
-        console.log(error);
-        toast.error("An error occured while updating the member!")
+      console.log(error);
+      toast.error("An error occured while updating the member!");
     }
-  }
+  };
   return (
     <div>
       <h1>{MemberData?.member?.name?.en}</h1>
@@ -173,7 +179,7 @@ export default function EditMemberPage() {
               type="submit"
               className=" bg-secondary-yellow text-white w-fit hover:bg-secondary-yellow"
             >
-             {editMemberLoading? "..Posting" : " Create"}
+              {editMemberLoading ? "..Posting" : " Create"}
             </Button>
           </div>
         </form>
