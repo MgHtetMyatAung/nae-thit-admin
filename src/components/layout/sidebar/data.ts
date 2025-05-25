@@ -109,6 +109,16 @@ export const controlMenuItems = [
       },
     ],
   },
+  {title:"Contact Us",
+   url:"#",
+   icon:BriefcaseBusiness,
+   items:[
+    {
+      title: "Edit Contact Data",
+      url: ROUTE_PATH.Contactus.EDIT,
+    },
+   ]
+  },
   {
     title: "Blogs",
     url: "#",

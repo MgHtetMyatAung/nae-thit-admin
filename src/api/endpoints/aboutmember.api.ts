@@ -1,5 +1,5 @@
 import { baseAPI } from "../base.config";
-
+import { tagTypeData } from "../tagTypes";
 export const memberApi = baseAPI.injectEndpoints({
   endpoints: (builder) => ({
     createMember: builder.mutation({
@@ -8,24 +8,28 @@ export const memberApi = baseAPI.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: [tagTypeData.AboutTeamMember],
     }),
     getAllMember: builder.query({
       query: () => ({
         url: "/pages/teammember",
         method: "GET",
       }),
+      providesTags: [tagTypeData.AboutTeamMember],
     }),
     deleteMember: builder.mutation({
       query: ({ id }) => ({
         url: `/pages/teammember/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: [tagTypeData.AboutTeamMember],
     }),
     getEachMember: builder.query({
       query: ({ memberid }) => ({
         url: `/pages/teammember/${memberid}`,
         method: "GET",
       }),
+      providesTags: [tagTypeData.AboutTeamMember],
     }),
     editMember: builder.mutation({
       query: ({ memberid, data }) => ({
@@ -33,6 +37,7 @@ export const memberApi = baseAPI.injectEndpoints({
         method: "PUT",
         body: data,
       }),
+      invalidatesTags: [tagTypeData.AboutTeamMember],
     }),
   }),
 });

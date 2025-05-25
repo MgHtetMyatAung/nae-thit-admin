@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Label } from "@/components/ui/label";
@@ -68,9 +69,9 @@ export default function EditMemberPage() {
         toast.success(res?.message || "Succesfully edited the member!");
         navigate("/teammember/list");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      toast.error("An error occured while updating the member!");
+      toast.error(error?.data?.message || "An unknown error occured!");
     }
   };
   return (
