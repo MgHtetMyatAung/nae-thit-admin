@@ -25,6 +25,9 @@ export { default as FacilitiePage } from "./home/Facilities.page";
 export { default as FacilitieCreatePage } from "./home/FacilitiesCreate.page";
 export { default as FacilitieEditPage } from "./home/FacilitiesEdit.page";
 
+// request page
+export { default as RequestPage } from "./request/Request.page";
+
 // service page
 export { default as ServicePage } from "./services/Services.page";
 export { default as ServiceCreatePage } from "./services/ServicesCreate.page";

@@ -29,6 +29,7 @@ import {
   FacilitieEditPage,
   ResetPasswordPage,
   ResetPasswordVerifyPage,
+  RequestPage,
 } from "@/pages";
 
 export const RouteConfig = [
@@ -232,6 +233,18 @@ export const RouteConfig = [
       <>
         <PageTitle title="Edit Facilitie" />
         <FacilitieEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
+  // request route
+  {
+    path: ROUTE_PATH.REQUEST,
+    element: (
+      <>
+        <PageTitle title="User Request" />
+        <RequestPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,

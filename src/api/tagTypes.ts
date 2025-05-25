@@ -5,7 +5,8 @@ export const tagTypeData = {
   Facilities: "Facilities",
   Service: "Service",
   ServiceBanner: "ServiceBanner",
-  ContactData:"ContactusData",
-  AboutMission:"AboutMissionData",
-  AboutTeamMember:"AboutTeamMember",
+  ContactData: "ContactusData",
+  AboutMission: "AboutMissionData",
+  AboutTeamMember: "AboutTeamMember",
+  Request: "Request",
 };

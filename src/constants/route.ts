@@ -36,8 +36,8 @@ export const ROUTE_PATH = {
     EDIT: "teammember/edit/:id",
   },
 
-  Contactus:{
-    EDIT:"/contactdata/edit"
+  Contactus: {
+    EDIT: "/contactdata/edit",
   },
   // home page
   HOME: {
@@ -53,6 +53,9 @@ export const ROUTE_PATH = {
       EDIT: "/facilities/edit/:id",
     },
   },
+
+  // request page
+  REQUEST: "/request",
 
   // service page
   SERVICES: {
