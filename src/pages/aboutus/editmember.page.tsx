@@ -62,9 +62,9 @@ export default function EditMemberPage() {
             toast.success(res?.message||"Succesfully edited the member!")
             navigate("/teammember/list")
         }
-    } catch (error) {
+    } catch (error:any) {
         console.log(error);
-        toast.error("An error occured while updating the member!")
+        toast.error(error?.data?.message||"An unknown error occured!")
     }
   }
   return (

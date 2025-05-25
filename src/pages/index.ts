@@ -13,6 +13,9 @@ export { default as EditMissionPage } from "./aboutus/MissionEdit.page";
 export {default as AddTeamMemberPage} from "./aboutus/addmember.page"
 export {default as GetAllMemberPage} from "./aboutus/getAllMembers.page"
 export {default as EditMemberPage} from "./aboutus/editmember.page"
+
+//Contactus Page
+export {default as EditContactUsPage} from "./Contactus/ContactDataEdit.page"
 // home page
 export { default as HomePageBannerInfoPage } from "./home/HomePageBannerInfo.page";
 export { default as TestimonialPage } from "./home/Testimonials.page";

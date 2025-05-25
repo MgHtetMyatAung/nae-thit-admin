@@ -35,6 +35,10 @@ export const ROUTE_PATH = {
     LIST:'/teammember/list',
     EDIT:"teammember/edit/:id"
   },
+
+  Contactus:{
+    EDIT:"/contactdata/edit"
+  },
   // home page
   HOME: {
     EDIT: "/home-banner-info/edit",

@@ -11,6 +11,7 @@ import {
   AddTeamMemberPage,
   GetAllMemberPage,
   EditMemberPage,
+  EditContactUsPage,
   DashboardPage,
   LoginPage,
   VerifyPage,
@@ -144,6 +145,17 @@ export const RouteConfig = [
       <>
         <PageTitle title="Our Teammember Edit" />
         <EditMemberPage/>
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  /* Contact Edit*/
+  {
+    path: ROUTE_PATH.Contactus.EDIT,
+    element: (
+      <>
+        <PageTitle title="Contact Us Edit" />
+        <EditContactUsPage/>
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
