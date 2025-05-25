@@ -3,5 +3,5 @@ export const tagTypeData = {
   HomeBanner: "HomeBanner",
   Testimonial: "Testimonial",
   Service: "Service",
-  ServiceBanner: "ServiceBanner",
+  ServiceBanner: "ServiceBanner"
 };
