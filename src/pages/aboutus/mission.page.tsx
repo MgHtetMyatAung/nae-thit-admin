@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCreateMissionMutation } from "@/api/endpoints/aboutmission.api";
-import { useState, FormEvent, ChangeEvent } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import {useForm} from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -16,19 +15,19 @@ interface MissionDataType {
 
 const AboutMissionCreate = () => {
   const [createMission, { isLoading }] = useCreateMissionMutation();
-  const {register,handleSubmit} = useForm<MissionDataType>();
+  const { register, handleSubmit } = useForm<MissionDataType>();
 
-  const HandleCreateMission:SubmitHandler<MissionDataType> = async(data)=>{
+  const HandleCreateMission: SubmitHandler<MissionDataType> = async (data) => {
     try {
       const res = await createMission(data).unwrap();
-      if(res.success){
-       toast.success(res.message)
+      if (res.success) {
+        toast.success(res.message);
       }
-    } catch (error:any) {
-      console.log(error)
-      alert(error?.data?.message)
+    } catch (error: any) {
+      console.log(error);
+      alert(error?.data?.message);
     }
-  }
+  };
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
@@ -63,7 +62,7 @@ const AboutMissionCreate = () => {
                 Title (English)
               </Label>
               <Input
-               {...register("titleen")}
+                {...register("titleen")}
                 type="text"
                 id="titleen"
                 name="titleen"
@@ -81,7 +80,7 @@ const AboutMissionCreate = () => {
                 Mission (English)
               </Label>
               <Textarea
-               {...register("missionen")}
+                {...register("missionen")}
                 id="missionen"
                 name="missionen"
                 rows={4}
@@ -124,7 +123,7 @@ const AboutMissionCreate = () => {
                 Mission (Myanmar)
               </Label>
               <Textarea
-               {...register("missionmy")}
+                {...register("missionmy")}
                 id="missionmy"
                 name="missionmy"
                 rows={4}

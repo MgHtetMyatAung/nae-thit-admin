@@ -21,6 +21,7 @@ import { Label } from "@/components/ui/label";
 import toast from "react-hot-toast";
 import { ChevronLeft } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ROUTE_PATH } from "@/constants/route";
 
 const categories = [
   { title: "Articles", value: "articles" },
@@ -63,7 +64,7 @@ export default function BlogEditPage() {
       const res = await editBlog({ data: formData, id: blogId }).unwrap();
       if (res.success) {
         toast.success(res.message);
-        navigate("/blogs");
+        navigate(ROUTE_PATH.BLOG.LIST);
       }
     } catch (error) {
       console.log(error);

@@ -54,7 +54,7 @@ export const applicationMenuItems = [
   },
   {
     title: "Requests",
-    url: "#",
+    url: ROUTE_PATH.REQUEST,
     icon: Inbox,
   },
   {
@@ -80,6 +80,20 @@ export const controlMenuItems = [
         url: ROUTE_PATH.HOME.EDIT,
       },
       {
+        title: "Facilities",
+        url: "#",
+        items: [
+          {
+            title: "List",
+            url: ROUTE_PATH.HOME.FACILITIES.LIST,
+          },
+          {
+            title: "create",
+            url: ROUTE_PATH.HOME.FACILITIES.CREATE,
+          },
+        ],
+      },
+      {
         title: "Testimonials",
         url: "#",
         items: [
@@ -95,15 +109,16 @@ export const controlMenuItems = [
       },
     ],
   },
-  {title:"Contact Us",
-   url:"#",
-   icon:BriefcaseBusiness,
-   items:[
-    {
-      title: "Edit Contact Data",
-      url: ROUTE_PATH.Contactus.EDIT,
-    },
-   ]
+  {
+    title: "Contact Us",
+    url: "#",
+    icon: BriefcaseBusiness,
+    items: [
+      {
+        title: "Edit Contact Data",
+        url: ROUTE_PATH.Contactus.EDIT,
+      },
+    ],
   },
   {
     title: "Blogs",

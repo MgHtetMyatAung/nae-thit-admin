@@ -17,12 +17,18 @@ export {default as AddLeaderPage} from "./aboutus/addleader.page"
 export {default as GetAllLeaderPage} from "./aboutus/getAllLeader.page"
 export {default as EditLeaderPage} from "./aboutus/editleader.page"
 //Contactus Page
-export {default as EditContactUsPage} from "./Contactus/ContactDataEdit.page"
+export { default as EditContactUsPage } from "./Contactus/ContactDataEdit.page";
 // home page
 export { default as HomePageBannerInfoPage } from "./home/HomePageBannerInfo.page";
 export { default as TestimonialPage } from "./home/Testimonials.page";
 export { default as TestimonialCreatePage } from "./home/TestimonialsCreate.page";
 export { default as TestimonialEditPage } from "./home/TestimonialsEdit.page";
+export { default as FacilitiePage } from "./home/Facilities.page";
+export { default as FacilitieCreatePage } from "./home/FacilitiesCreate.page";
+export { default as FacilitieEditPage } from "./home/FacilitiesEdit.page";
+
+// request page
+export { default as RequestPage } from "./request/Request.page";
 
 // service page
 export { default as ServicePage } from "./services/Services.page";
@@ -33,6 +39,8 @@ export { default as ServiceBannerPage } from "./services/ServicesBanner.page";
 // auth
 export { default as LoginPage } from "./auth/Login.page";
 export { default as VerifyPage } from "./auth/Verify.page";
+export { default as ResetPasswordPage } from "./auth/ResetPassword.page";
+export { default as ResetPasswordVerifyPage } from "./auth/ResetPasswordVerify.page";
 
 // not found
 export { default as NotFoundPage } from "./404/NotFound.page";

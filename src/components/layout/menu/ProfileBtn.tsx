@@ -1,4 +1,4 @@
-import { BadgeCheck, Bell, CreditCard, LogOut, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -8,13 +8,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useDispatch } from "react-redux";
-import { systemLogout } from "@/redux/auth.slice";
+import LogoutBtn from "@/components/action/LogoutBtn";
 export function ProfileBtn() {
-  const dispatch = useDispatch();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger>
         <Avatar className="h-9 w-9 rounded-lg">
           <AvatarImage
             src={"/user.png"}
@@ -38,28 +36,8 @@ export function ProfileBtn() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem className=" cursor-pointer">
-            <BadgeCheck />
-            Account
-          </DropdownMenuItem>
-          <DropdownMenuItem className=" cursor-pointer">
-            <CreditCard />
-            Billing
-          </DropdownMenuItem>
-          <DropdownMenuItem className=" cursor-pointer">
-            <Bell />
-            Notifications
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className=" cursor-pointer"
-          onClick={() => dispatch(systemLogout())}
-        >
-          <LogOut />
-          Log out
-        </DropdownMenuItem>
+        {/* <DropdownMenuSeparator /> */}
+        <LogoutBtn />
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -30,10 +30,10 @@ export const ROUTE_PATH = {
     EDIT: "/aboutmission/edit/:id",
   },
 
-  AboutTeamMember:{
-    CREATE:"/teammember/create",
-    LIST:'/teammember/list',
-    EDIT:"teammember/edit/:id"
+  AboutTeamMember: {
+    CREATE: "/teammember/create",
+    LIST: "/teammember/list",
+    EDIT: "teammember/edit/:id",
   },
 
   AboutLeader:{
@@ -42,8 +42,8 @@ export const ROUTE_PATH = {
     EDIT:"/ourleader/edit/:id"
   },
 
-  Contactus:{
-    EDIT:"/contactdata/edit"
+  Contactus: {
+    EDIT: "/contactdata/edit",
   },
   // home page
   HOME: {
@@ -53,7 +53,15 @@ export const ROUTE_PATH = {
       LIST: "/testimonials/list",
       EDIT: "/testimonials/edit/:id",
     },
+    FACILITIES: {
+      CREATE: "/facilities/create",
+      LIST: "/facilities/list",
+      EDIT: "/facilities/edit/:id",
+    },
   },
+
+  // request page
+  REQUEST: "/request",
 
   // service page
   SERVICES: {
@@ -90,6 +98,8 @@ export const ROUTE_PATH = {
   //   FOR AUTH PAGES
   LOGIN: "/signin",
   VERIFY: "/verify",
+  RESET_PASSWORD: "/reset-password",
+  RESET_PASSWORD_VERIFY: "/reset-password-verify",
   // RESET_PASSWORD: '/reset-password',
   // SIGNUP: '/signup',
   // FORG0T_PASSWORD: '/forgot-password',

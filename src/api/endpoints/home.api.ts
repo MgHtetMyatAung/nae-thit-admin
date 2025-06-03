@@ -14,6 +14,7 @@ export const homeApi = baseAPI.injectEndpoints({
         body: data,
       }),
     }),
+    // testimonials api routes
     getTestimonials: build.query({
       query: () => ({ url: `/pages/testimonals`, method: "GET" }),
       providesTags: [tagTypeData.Testimonial],
@@ -48,6 +49,53 @@ export const homeApi = baseAPI.injectEndpoints({
       }),
       invalidatesTags: [tagTypeData.Testimonial],
     }),
+    // facilities api routes
+    getFacilities: build.query({
+      query: () => ({ url: `/pages/facilities`, method: "GET" }),
+      providesTags: [tagTypeData.Facilities],
+    }),
+    getFacilitieDetail: build.query({
+      query: ({ id }) => ({
+        url: `/pages/facilities/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypeData.Facilities],
+    }),
+    createFacilitie: build.mutation({
+      query: (data) => ({
+        url: `/pages/facilities`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [tagTypeData.Facilities],
+    }),
+    editFacilitie: build.mutation({
+      query: ({ data, id }) => ({
+        url: `/pages/facilities/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: [tagTypeData.Facilities],
+    }),
+    deleteFacilitie: build.mutation({
+      query: ({ id }) => ({
+        url: `/pages/facilities/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypeData.Facilities],
+    }),
+    getCountDatas: build.query({
+      query: () => ({
+        url: `/pages/postcounts`,
+        method: "GET",
+      }),
+      providesTags: [
+        tagTypeData.Facilities,
+        tagTypeData.Service,
+        tagTypeData.Testimonial,
+        tagTypeData.Blog,
+      ],
+    }),
   }),
 });
 
@@ -59,4 +107,10 @@ export const {
   useEditTestimonialMutation,
   useGetTestimonialsQuery,
   useGetTestimonialDetailQuery,
+  useGetFacilitieDetailQuery,
+  useGetFacilitiesQuery,
+  useCreateFacilitieMutation,
+  useEditFacilitieMutation,
+  useDeleteFacilitieMutation,
+  useGetCountDatasQuery,
 } = homeApi;

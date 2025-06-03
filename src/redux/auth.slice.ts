@@ -31,6 +31,15 @@ const authSlice = createSlice({
         }
       }
     );
+    builder.addMatcher(
+      authApi.endpoints.resetPassword.matchFulfilled,
+      (state, action) => {
+        if (action.payload) {
+          state.accessToken = action.payload.loginToken;
+          state.isAuthenticated = !!action.payload.loginToken;
+        }
+      }
+    );
     builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
       state.accessToken = null;
       state.isAuthenticated = false;

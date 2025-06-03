@@ -27,8 +27,13 @@ import {
   ServiceCreatePage,
   ServiceEditPage,
   ServiceBannerPage,
+  FacilitiePage,
+  FacilitieCreatePage,
+  FacilitieEditPage,
+  ResetPasswordPage,
+  ResetPasswordVerifyPage,
+  RequestPage,
 } from "@/pages";
-import { Route } from "react-router-dom";
 
 export const RouteConfig = [
   {
@@ -124,7 +129,7 @@ export const RouteConfig = [
     element: (
       <>
         <PageTitle title="Aboutus Add Teammember" />
-        <AddTeamMemberPage/>
+        <AddTeamMemberPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
@@ -135,19 +140,19 @@ export const RouteConfig = [
     element: (
       <>
         <PageTitle title="Our Teammember" />
-        <GetAllMemberPage/>
+        <GetAllMemberPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
   },
- 
+
   /* Member Edit*/
   {
     path: ROUTE_PATH.AboutTeamMember.EDIT,
     element: (
       <>
         <PageTitle title="Our Teammember Edit" />
-        <EditMemberPage/>
+        <EditMemberPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
@@ -192,12 +197,12 @@ export const RouteConfig = [
     element: (
       <>
         <PageTitle title="Contact Us Edit" />
-        <EditContactUsPage/>
+        <EditContactUsPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
   },
- 
+
   // home routes
   {
     path: ROUTE_PATH.HOME.EDIT,
@@ -235,6 +240,48 @@ export const RouteConfig = [
       <>
         <PageTitle title="Edit Testimonial" />
         <TestimonialEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.FACILITIES.LIST,
+    element: (
+      <>
+        <PageTitle title="Facilities" />
+        <FacilitiePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.FACILITIES.CREATE,
+    element: (
+      <>
+        <PageTitle title="Create Facilitie" />
+        <FacilitieCreatePage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  {
+    path: ROUTE_PATH.HOME.FACILITIES.EDIT,
+    element: (
+      <>
+        <PageTitle title="Edit Facilitie" />
+        <FacilitieEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
+  // request route
+  {
+    path: ROUTE_PATH.REQUEST,
+    element: (
+      <>
+        <PageTitle title="User Request" />
+        <RequestPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,
@@ -300,6 +347,26 @@ export const RouteConfig = [
       <>
         {/* <PageTitle title="Veri" /> */}
         <VerifyPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.AUTH,
+  },
+  {
+    path: ROUTE_PATH.RESET_PASSWORD,
+    element: (
+      <>
+        <PageTitle title="Reset Password" />
+        <ResetPasswordPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.AUTH,
+  },
+  {
+    path: ROUTE_PATH.RESET_PASSWORD_VERIFY,
+    element: (
+      <>
+        <PageTitle title="Reset Password Verify" />
+        <ResetPasswordVerifyPage />
       </>
     ),
     access_type: ROUTE_ACCESS.AUTH,
