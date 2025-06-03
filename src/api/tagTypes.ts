@@ -7,4 +7,5 @@ export const tagTypeData = {
   ContactData:"ContactusData",
   AboutMission:"AboutMissionData",
   AboutTeamMember:"AboutTeamMember",
+  AboutLeader:"AboutLeader"
 };

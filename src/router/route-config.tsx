@@ -11,6 +11,9 @@ import {
   AddTeamMemberPage,
   GetAllMemberPage,
   EditMemberPage,
+  AddLeaderPage,
+  GetAllLeaderPage,
+  EditLeaderPage,
   EditContactUsPage,
   DashboardPage,
   LoginPage,
@@ -145,6 +148,40 @@ export const RouteConfig = [
       <>
         <PageTitle title="Our Teammember Edit" />
         <EditMemberPage/>
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+
+  /* Add Leader*/
+  {
+    path: ROUTE_PATH.AboutLeader.CREATE,
+    element: (
+      <>
+        <PageTitle title="Add leader" />
+        <AddLeaderPage/>
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  /* List Leader*/
+  {
+    path: ROUTE_PATH.AboutLeader.LIST,
+    element: (
+      <>
+        <PageTitle title="Lisr leader" />
+        <GetAllLeaderPage/>
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+  /* List Leader*/
+  {
+    path: ROUTE_PATH.AboutLeader.EDIT,
+    element: (
+      <>
+        <PageTitle title="Edit Leader" />
+        <EditLeaderPage/>
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,

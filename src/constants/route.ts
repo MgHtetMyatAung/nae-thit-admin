@@ -36,6 +36,12 @@ export const ROUTE_PATH = {
     EDIT:"teammember/edit/:id"
   },
 
+  AboutLeader:{
+    CREATE:"/ourleader/create",
+    LIST:"/ourleader/list",
+    EDIT:"/ourleader/edit/:id"
+  },
+
   Contactus:{
     EDIT:"/contactdata/edit"
   },
