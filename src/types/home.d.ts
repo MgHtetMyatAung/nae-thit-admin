@@ -40,6 +40,8 @@ type FacilitieType = {
   clinicname_my: string;
   openinghr_en: string;
   openinghr_my: string;
+  address_en:string;
+  address_my:string;
   mapurl: string;
   photo: string;
 };

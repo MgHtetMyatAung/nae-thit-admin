@@ -27,13 +27,13 @@ export default function FacilitiesEditPage() {
   const { register, handleSubmit, setValue } =
     useForm<Omit<FacilitieType, "_id">>();
 
-  const handleEdit = async (data: Omit<FacilitieType, "_id">) => {
+  const handleEdit = async (datatoupload: Omit<FacilitieType, "_id">) => {
     if (!selectedImage) return alert("Please choose photo");
     const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => {
+    Object.entries(datatoupload).forEach(([key, value]) => {
       formData.append(key, value);
     });
-    formData.append("img", selectedImage);
+    formData.append("photo", selectedImage);
     try {
       const res = await updateFacilitie({ data: formData, id }).unwrap();
       if (res.success) {
@@ -76,12 +76,15 @@ export default function FacilitiesEditPage() {
 
   useEffect(() => {
     if (data) {
+      const photoBase_URL = "https://naethitasanv2.onrender.com"
       setValue("clinicname_en", data?.facility?.clinicname_en);
       setValue("clinicname_my", data?.facility?.clinicname_my);
       setValue("openinghr_en", data?.facility?.openinghr_en);
       setValue("openinghr_my", data?.facility?.openinghr_my);
+      setValue("address_en", data?.facility?.address_en)
+      setValue("address_my", data?.facility?.address_my)
       setValue("mapurl", data?.facility?.mapurl);
-      setPreviewUrl(data?.facility?.photo);
+      setPreviewUrl(`${photoBase_URL}${data?.facility?.photo}`);
       setSelectedImage(data?.facility?.photo);
     }
   }, [data]);
@@ -134,6 +137,24 @@ export default function FacilitiesEditPage() {
                 type="text"
                 className=" bg-white"
                 {...register("openinghr_my", { required: true })}
+              />
+            </div>
+            {/* Address En */}
+            <div className=" space-y-1">
+              <Label className=" text-gray-500 block">Address Text (en)</Label>
+              <Input
+                type="text"
+                className=" bg-white"
+                {...register("address_en", { required: true })}
+              />
+            </div>
+            {/* Address My */}
+            <div className=" space-y-1">
+              <Label className=" text-gray-500 block">Address Text (my)</Label>
+              <Input
+                type="text"
+                className=" bg-white"
+                {...register("address_my", { required: true })}
               />
             </div>
             <div className=" space-y-1">

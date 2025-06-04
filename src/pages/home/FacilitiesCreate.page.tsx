@@ -119,6 +119,24 @@ export default function FacilitiesCreatePage() {
                 {...register("openinghr_my", { required: true })}
               />
             </div>
+            {/* Address_En */}
+            <div className=" space-y-1">
+              <Label className=" text-gray-500 block">Address Text (en)</Label>
+              <Input
+                type="text"
+                className=" bg-white"
+                {...register("address_en", { required: true })}
+              />
+            </div>
+            {/* Address_My */}
+            <div className=" space-y-1">
+              <Label className=" text-gray-500 block">Address Text (my)</Label>
+              <Input
+                type="text"
+                className=" bg-white"
+                {...register("address_my", { required: true })}
+              />
+            </div>
             <div className=" space-y-1">
               <Label htmlFor="patient-note-en" className=" text-gray-500 block">
                 Map Url
