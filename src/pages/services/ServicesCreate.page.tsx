@@ -89,32 +89,36 @@ export default function ServicesCreatePage() {
             <div className=" space-y-1">
               <Label className=" text-gray-500 block">Title (en)</Label>
               <Input
+                placeholder="Title you want to use to display on the Service Page"
                 type="text"
-                className=" bg-white"
+                className=" bg-white text-gray-500 italic focus:text-black"
                 {...register("title_en", { required: true })}
               />
             </div>
             <div className=" space-y-1">
               <Label className=" text-gray-500 block">Title (my)</Label>
               <Input
+                placeholder="Title you want to use to display on the Service Page"
                 type="text"
-                className=" bg-white"
+                className=" bg-white text-gray-500 italic focus:text-black"
                 {...register("title_my", { required: true })}
               />
             </div>
             <div className=" space-y-1">
               <Label className=" text-gray-500 block">Sub Title (en)</Label>
               <Input
+                placeholder="Title you want to use to display on the Main Page"
                 type="text"
-                className=" bg-white"
+                className=" bg-white text-gray-500 italic focus:text-black"
                 {...register("subtitle_en", { required: true })}
               />
             </div>
             <div className=" space-y-1">
               <Label className=" text-gray-500 block">Sub Title (my)</Label>
               <Input
+                placeholder="Title you want to use to display on the Main Page"
                 type="text"
-                className=" bg-white"
+                className=" bg-white text-gray-500 italic focus:text-black"
                 {...register("subtitle_my", { required: true })}
               />
             </div>
@@ -123,10 +127,11 @@ export default function ServicesCreatePage() {
                 Description (en)
               </Label>
               <Textarea
+              placeholder="This field is optional. Leave it blank if this serive will only be shown on the service page."
                 id="patient-note-en"
                 rows={5}
-                {...register("description_en", { required: true })}
-                className=" bg-white"
+                {...register("description_en")}
+                className=" bg-white text-gray-500 italic focus:text-black"
               />
             </div>
             <div className=" space-y-1">
@@ -134,10 +139,11 @@ export default function ServicesCreatePage() {
                 Description (my)
               </Label>
               <Textarea
+                placeholder=" This field is optional. Leave it blank if this serive will only be shown on the service page."
                 id="patient-note-my"
                 rows={5}
-                {...register("description_my", { required: true })}
-                className=" bg-white"
+                {...register("description_my")}
+                className=" bg-white text-gray-500 italic focus:text-black"
               />
             </div>
             <div className=" flex items-center gap-3 my-5">

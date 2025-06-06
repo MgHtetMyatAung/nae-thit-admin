@@ -52,7 +52,7 @@ export default function EditLeader() {
      if(data?.photo&&data?.photo.length>0){
       formData.append("photo",data.photo[0])
      }
-
+     console.log(data)
      try {
        const res = await editLeader({id:LeaderId,data:formData}).unwrap();
        if(res.success){

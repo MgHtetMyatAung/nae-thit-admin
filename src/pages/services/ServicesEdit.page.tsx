@@ -93,6 +93,9 @@ export default function ServicesEditPage() {
       setValue("subtitle_my", serviceDetail?.service?.subtitle_my);
       setValue("description_en", serviceDetail?.service?.description_en);
       setValue("description_my", serviceDetail?.service?.description_my);
+      if(serviceDetail?.service?.showonhomepage==="true"){
+        setValue("showonhomepage","true")
+      }
     }
   }, [serviceDetail]);
 
@@ -154,7 +157,7 @@ export default function ServicesEditPage() {
               <Textarea
                 id="patient-note-en"
                 rows={5}
-                {...register("description_en", { required: true })}
+                {...register("description_en")}
                 className=" bg-white"
               />
             </div>
@@ -165,10 +168,11 @@ export default function ServicesEditPage() {
               <Textarea
                 id="patient-note-my"
                 rows={5}
-                {...register("description_my", { required: true })}
+                {...register("description_my")}
                 className=" bg-white"
               />
             </div>
+            <div>
             <div className=" flex items-center gap-3 my-5">
               <input
                 type="checkbox"
@@ -176,6 +180,8 @@ export default function ServicesEditPage() {
                 id="showonhomepage"
               />
               <Label htmlFor="showonhomepage">Show on home page</Label>
+            </div>
+            <p className="text-green-800 text-bold">{serviceDetail?.service?.showonhomepage==="true" ? "It's shown on homepage now." : "It's show on service page now."}</p>
             </div>
             <div className={`flex flex-col col-span-1 lg:col-span-2`}>
               <Label className=" text-gray-600 mb-2">Upload Logo</Label>
