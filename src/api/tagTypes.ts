@@ -9,5 +9,6 @@ export const tagTypeData = {
   AboutMission:"AboutMissionData",
   AboutTeamMember:"AboutTeamMember",
   Request: "Request",
-  AboutLeader:"AboutLeader"
+  AboutLeader:"AboutLeader",
+  CountNoti:"noticount"
 };

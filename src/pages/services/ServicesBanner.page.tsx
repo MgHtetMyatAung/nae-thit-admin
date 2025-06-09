@@ -12,7 +12,8 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-const url = import.meta.env.VITE_BASE_URL;
+//const url = import.meta.env.VITE_BASE_URL;
+const url = "https://naethitasanv2.onrender.com"
 export default function ServicesBannerPage() {
   const [defaultImgs, setDefaultImgs] = useState({
     banner_img: "" as string,
@@ -69,7 +70,7 @@ export default function ServicesBannerPage() {
       });
       setImgs({
         banner_img: serviceBannerInfo?.data?.banner_bg_img,
-        blog1_img: serviceBannerInfo?.data?.blog1_img,
+        blog1_img:serviceBannerInfo?.data?.blog1_img,
         blog2_img: serviceBannerInfo?.data?.blog2_img,
       });
     }
@@ -131,6 +132,7 @@ export default function ServicesBannerPage() {
                   />
                 </div>
               </div>
+              <h2 className="text-blue-700 font-bold text-xl">You can edit the texts and images of the contents on the service page here.</h2>
               <div className=" grid lg:grid-cols-2 gap-5">
                 <div>
                   <Label htmlFor="blog1-en" className=" text-gray-600">
