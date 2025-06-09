@@ -7,7 +7,7 @@ export default function DashboardMenu({ title }: { title?: string }) {
   const { isMobile } = useSidebar();
   const navigate = useNavigate();
   const {data:noticount, isLoading:fetchCountLoading} = useGetCountQuery({});
-  const [resetCount, {isLoading}] = useResetCountMutation()
+  const [resetCount] = useResetCountMutation()
   return (
     <nav className=" sticky flex z-10 justify-between items-center px-5 py-4 top-0 right-0 bg-white">
       <div className="flex gap-3 items-center">
