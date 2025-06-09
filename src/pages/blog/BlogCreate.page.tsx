@@ -150,6 +150,18 @@ export default function BlogCreatePage() {
                 {...register("timelength", { required: true })}
               />
             </div>
+            <div className=" space-y-1">
+              <Label htmlFor="postdate" className=" text-gray-600">
+                Post Date
+              </Label>
+              <Input
+                type="date"
+                className=" bg-white"
+                placeholder="Post Date"
+                id="read-time"
+                {...register("postdate", { required: true })}
+              />
+            </div>
             <div className="space-y-1">
               <Label htmlFor="category" className=" text-gray-600">
                 Choose Category

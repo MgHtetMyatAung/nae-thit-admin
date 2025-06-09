@@ -49,6 +49,7 @@ export default function BlogEditPage() {
       descriptionmy: blogDetail?.blog?.description?.my || "",
       timelength: blogDetail?.blog?.timelength || "",
       catagory: blogDetail?.blog?.category || "",
+      postdate:blogDetail?.blog?.postdate || ""
     },
   });
 
@@ -83,6 +84,11 @@ export default function BlogEditPage() {
       setValue("descriptionmy", blogDetail?.blog?.description?.my);
       setValue("timelength", blogDetail?.blog?.timelength);
       setValue("catagory", blogDetail?.blog?.category);
+      const rawPostDate = blogDetail?.blog?.postdate;
+      if(rawPostDate){
+        const formattedDate = new Date(rawPostDate).toISOString().split("T")[0];
+        setValue("postdate",formattedDate);
+      }
     }
   }, [blogDetail]);
 
@@ -197,6 +203,18 @@ export default function BlogEditPage() {
                     placeholder="Read time"
                     id="read-time"
                     {...register("timelength", { required: true })}
+                  />
+                </div>
+                <div className=" space-y-1">
+                  <Label htmlFor="postdate" className=" text-gray-600">
+                    Post Date
+                  </Label>
+                  <Input
+                    type="date"
+                    className=" bg-white"
+                    placeholder="Read time"
+                    id="postdate"
+                    {...register("postdate", { required: true })}
                   />
                 </div>
                 <div className="space-y-1">
