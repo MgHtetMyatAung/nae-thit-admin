@@ -17,6 +17,8 @@ type HomeBannerInfoType = {
   nom_my: string;
   tps_en: string;
   tps_my: string;
+  bannerimgFile:FileList;
+  blogimgFile:FileList
 };
 
 type HomeBannerInfoResType = {
