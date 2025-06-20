@@ -13,7 +13,6 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
 export default function HomePageBannerInfoPage() {
   const { data: homeBannerInfo, isLoading } = useGetHomeBannerInfoQuery({});
   const [editInfo, { isLoading: loadEdit }] = useEditHomeBannerInfoMutation();
