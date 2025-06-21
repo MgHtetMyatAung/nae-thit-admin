@@ -10,5 +10,6 @@ export const tagTypeData = {
   AboutTeamMember:"AboutTeamMember",
   Request: "Request",
   AboutLeader:"AboutLeader",
-  CountNoti:"noticount"
+  CountNoti:"noticount",
+  BlogCata:"blogcata"
 };

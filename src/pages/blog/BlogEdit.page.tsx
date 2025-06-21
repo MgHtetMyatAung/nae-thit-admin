@@ -22,7 +22,7 @@ import toast from "react-hot-toast";
 import { ChevronLeft } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE_PATH } from "@/constants/route";
-
+import { useGetCataQuery } from "@/api/endpoints/blogcata.api";
 const categories = [
   { title: "Articles", value: "articles" },
   { title: "Events", value: "events" },
@@ -35,12 +35,13 @@ export default function BlogEditPage() {
     { id: blogId },
     { skip: !blogId }
   );
+
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [editBlog, { isLoading }] = useEditBlogMutation();
-
+  const {data:CataData} = useGetCataQuery({});
   const { register, handleSubmit, setValue } = useForm<BlogTypePayload>({
     defaultValues: {
       titleen: blogDetail?.blog?.title?.en || "",
@@ -227,9 +228,9 @@ export default function BlogEditPage() {
                     {...register("catagory", { required: true })}
                     className=" p-2 block w-full"
                   >
-                    {categories.map((cate) => (
-                      <option key={cate.value} value={cate.value}>
-                        {cate.title}
+                    {CataData?.data?.map((cate:TypeOfEachCata,index:number) => (
+                      <option key={index} value={cate.cata_name}>
+                        {cate.cata_name}
                       </option>
                     ))}
                   </select>

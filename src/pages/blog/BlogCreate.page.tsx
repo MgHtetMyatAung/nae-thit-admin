@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { useCreateBlogMutation } from "@/api/endpoints/blog.api";
 import toast from "react-hot-toast";
 import { Label } from "@/components/ui/label";
-
+import { useGetCataQuery } from "@/api/endpoints/blogcata.api";
 const categories = [
   { title: "Articles", value: "articles" },
   { title: "Events", value: "events" },
@@ -26,7 +26,7 @@ export default function BlogCreatePage() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
+   const {data:CataData} = useGetCataQuery({});
   const [createBlog, { isLoading }] = useCreateBlogMutation();
 
   const { register, handleSubmit, reset } = useForm<BlogTypePayload>();
@@ -171,9 +171,9 @@ export default function BlogCreatePage() {
                 {...register("catagory", { required: true })}
                 className=" p-2 block w-full"
               >
-                {categories.map((cate) => (
-                  <option key={cate.value} value={cate.value}>
-                    {cate.title}
+                {CataData?.data?.map((cate:TypeOfEachCata,index:number)=> (
+                  <option key={index} value={cate.cata_name}>
+                    {cate.cata_name}
                   </option>
                 ))}
               </select>

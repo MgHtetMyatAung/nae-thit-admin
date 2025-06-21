@@ -4,7 +4,7 @@ export { default as DashboardPage } from "./dashboard/Dashboard.page";
 export { default as BlogListPage } from "./blog/BlogList.page";
 export { default as BlogCreatePage } from "./blog/BlogCreate.page";
 export { default as BlogEditPage } from "./blog/BlogEdit.page";
-
+export {default as AddCataPage } from "./blog/AddCata.page"
 //aboutus
 export { default as AboutusBannerEditPage } from "./aboutus/bannerEdit.page";
 export { default as AboutusMissionCreatePage } from "./aboutus/mission.page";

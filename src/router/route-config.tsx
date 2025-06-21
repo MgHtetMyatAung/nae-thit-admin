@@ -33,6 +33,7 @@ import {
   ResetPasswordPage,
   ResetPasswordVerifyPage,
   RequestPage,
+  AddCataPage
 } from "@/pages";
 
 export const RouteConfig = [
@@ -74,6 +75,16 @@ export const RouteConfig = [
       <>
         <PageTitle title="Blog Edit" />
         <BlogEditPage />
+      </>
+    ),
+    access_type: ROUTE_ACCESS.PRIVATE,
+  },
+   {
+    path: ROUTE_PATH.BLOG.Cata.CREATE,
+    element: (
+      <>
+        <PageTitle title="BlOGCata Create" />
+        <AddCataPage />
       </>
     ),
     access_type: ROUTE_ACCESS.PRIVATE,

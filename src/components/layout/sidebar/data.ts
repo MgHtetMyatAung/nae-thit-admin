@@ -138,8 +138,8 @@ export const controlMenuItems = [
         url: "#",
         items: [
           {
-            title: "List",
-            url: "#",
+            title: "Create Cata",
+            url: ROUTE_PATH.BLOG.Cata.CREATE,
           },
           {
             title: "Filters",

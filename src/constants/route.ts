@@ -18,8 +18,11 @@ export const ROUTE_PATH = {
     LIST: "/blogs",
     CREATE: "/blogs/create",
     EDIT: "/blogs/edit/:blogId",
+    Cata: {
+      CREATE:"/blogs/cata/create"
+    }
   },
-
+  
   ABOUTUSBANNER: {
     EDIT: "/aboutusbanner/edit",
   },
