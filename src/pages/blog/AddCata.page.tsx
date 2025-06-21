@@ -53,7 +53,7 @@ export default function AddCata() {
       <h2 className="text-center font-bold">Existing Catagories</h2>
       {
         DataLoading?(
-            <div>...Loading</div>
+            <div>...LOADING</div>
         ):(
             <div className="w-[50%] mx-auto">
                <ul>
