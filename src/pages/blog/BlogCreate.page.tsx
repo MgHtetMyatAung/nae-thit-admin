@@ -17,10 +17,7 @@ import { useCreateBlogMutation } from "@/api/endpoints/blog.api";
 import toast from "react-hot-toast";
 import { Label } from "@/components/ui/label";
 import { useGetCataQuery } from "@/api/endpoints/blogcata.api";
-const categories = [
-  { title: "Articles", value: "articles" },
-  { title: "Events", value: "events" },
-];
+
 
 export default function BlogCreatePage() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);

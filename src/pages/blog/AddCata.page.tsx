@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Label } from "@/components/ui/label";
 import { toast } from "react-hot-toast";
 import { useAddCataMutation } from "@/api/endpoints/blogcata.api";
 import { useGetCataQuery } from "@/api/endpoints/blogcata.api";
